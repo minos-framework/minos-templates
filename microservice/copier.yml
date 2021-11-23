@@ -8,6 +8,30 @@ version:
   type: str
   help: What is the version of the microservice?
   default: 0.1.0
+author:
+  type: str
+  help: Who is the author of the microservice?
+email:
+  type: str
+  help: What is the email of the microservice's author?
+database_host:
+  default: localhost
+database_port:
+  default: 5432
+database_user:
+  default: "minos"
+database_password:
+  default: min0s
+broker_host:
+  default: localhost
+broker_port:
+  default: "9092"
+rest_host:
+  default: 0.0.0.0
+rest_port:
+  default: 8080
+aggregate:
+  type: str
 _envops:
   block_start_string: "{%"
   block_end_string: "%}"
