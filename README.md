@@ -1,2 +1,2 @@
 # minos-templates
-Templates for Minos code generation
+Templates for automatic Minos code generation
