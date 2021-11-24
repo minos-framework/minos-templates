@@ -21,6 +21,12 @@ aggregate:
   type: str
   default: "{{ name.replace('_',' ').title().replace(' ', '') }}"
   help: What is the name of the microservices's Aggregate?
+database:
+  type: str
+  default: postgresql
+  choices:
+    - postgresql
+  help: What is the database? [ TODO ]
 database_host:
   type: str
   default: localhost
@@ -41,6 +47,12 @@ broker_host:
   type: str
   default: localhost
   help: What is the broker's host?
+broker:
+  type: str
+  default: kafka
+  choices:
+    - kafka
+  help: What is the broker? [ TODO ]
 broker_port:
   type: str
   default: "9092"
@@ -53,6 +65,13 @@ rest_port:
   type: int
   default: 8080
   help: What is the rest's port?
+discovery:
+  type: str
+  default: minos
+  choices:
+    - minos
+    - kong
+  help: What is the discovery? [ TODO ]
 
 _envops:
   block_start_string: "{%"
