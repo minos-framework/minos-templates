@@ -4,6 +4,7 @@ name:
 description:
   type: str
   help: What is the description of the microservice?
+  default: "This is the {{ name }} microservice."
 version:
   type: str
   help: What is the version of the microservice?
