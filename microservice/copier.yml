@@ -42,6 +42,7 @@ database_user:
 database_password:
   type: str
   default: min0s
+  secret: true
   help: What is the database's password?
 broker_host:
   type: str
