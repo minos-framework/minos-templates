@@ -11,27 +11,48 @@ version:
 author:
   type: str
   help: Who is the author of the microservice?
+  default: Clariteia Devs
 email:
   type: str
   help: What is the email of the microservice's author?
-database_host:
-  default: localhost
-database_port:
-  default: 5432
-database_user:
-  default: "minos"
-database_password:
-  default: min0s
-broker_host:
-  default: localhost
-broker_port:
-  default: "9092"
-rest_host:
-  default: 0.0.0.0
-rest_port:
-  default: 8080
+  default: devs@clariteia.com
 aggregate:
   type: str
+  default: "{{ name.replace('_',' ').title().replace(' ', '') }}"
+  help: What is the name of the microservices's Aggregate?
+database_host:
+  type: str
+  default: localhost
+  help: What is the database's host?
+database_port:
+  type: int
+  default: 5432
+  help: What is the database's port?
+database_user:
+  type: str
+  default: minos
+  help: What is the database's user?
+database_password:
+  type: str
+  default: min0s
+  help: What is the database's password?
+broker_host:
+  type: str
+  default: localhost
+  help: What is the broker's host?
+broker_port:
+  type: str
+  default: "9092"
+  help: What is the broker's port?
+rest_host:
+  type: str
+  default: 0.0.0.0
+  help: What is the rest's host?
+rest_port:
+  type: int
+  default: 8080
+  help: What is the rest's port?
+
 _envops:
   block_start_string: "{%"
   block_end_string: "%}"
