@@ -9,14 +9,20 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
+      - name: Build Microservice Init Template
+        run: tar -czvf microservice-init.tar.gz ${{ github.workspace }}/microservice
+
+      - name: Build Project Init Template
+        run: tar -czvf project-init.tar.gz ${{ github.workspace }}/project
+
       - name: Upload Microservice Init Template
         uses: actions/upload-artifact@v2
         with:
             name: microservice-init
-            path: ${{ github.workspace }}/microservice
+            path: microservice-init.tar.gz
 
       - name: Upload Project Initialize Template
         uses: actions/upload-artifact@v2
         with:
             name: project-init
-            path: ${{ github.workspace }}/project
+            path: project-init.tar.gz
