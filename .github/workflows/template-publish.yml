@@ -1,0 +1,15 @@
+name: Publish Templates
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+            path: ${{ github.workspace }}
