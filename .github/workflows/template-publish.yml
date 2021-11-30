@@ -9,7 +9,14 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      - name: Upload Artifacts
+      - name: Upload Microservice Init Template
         uses: actions/upload-artifact@v2
         with:
-            path: ${{ github.workspace }}
+            name: microservice-init
+            path: ${{ github.workspace }}/microservice
+
+      - name: Upload Project Initialize Template
+        uses: actions/upload-artifact@v2
+        with:
+            name: project-init
+            path: ${{ github.workspace }}/project
