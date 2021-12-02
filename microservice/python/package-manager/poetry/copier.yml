@@ -1,0 +1,26 @@
+name:
+  type: str
+  help: What is the name of the microservice?
+description:
+  type: str
+  help: What is the description of the microservice?
+  default: "This is the {{ name }} microservice."
+author:
+  type: str
+  help: Who is the author of the microservice?
+  default: Clariteia Devs
+email:
+  type: str
+  help: What is the email of the microservice's author?
+  default: devs@clariteia.com
+
+_envops:
+  block_start_string: "{%"
+  block_end_string: "%}"
+  comment_start_string: "{#"
+  comment_end_string: "#}"
+  variable_start_string: "{{"
+  variable_end_string: "}}"
+  keep_trailing_newline: false
+
+_templates_suffix: .jinja

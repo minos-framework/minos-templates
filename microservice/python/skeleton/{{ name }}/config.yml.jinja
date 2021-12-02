@@ -1,0 +1,62 @@
+service:
+  name: {{ name }}
+  aggregate: src.aggregates.{{ aggregate }}
+  injections:
+    postgresql_pool: minos.common.PostgreSqlPool
+    command_broker: minos.networks.CommandBroker
+    command_reply_broker: minos.networks.CommandReplyBroker
+    event_broker: minos.networks.EventBroker
+    consumer: minos.networks.Consumer
+    dynamic_handler_pool: minos.networks.DynamicHandlerPool
+    repository: minos.common.PostgreSqlRepository
+    saga_manager: minos.saga.SagaManager
+    snapshot: minos.common.PostgreSqlSnapshot
+    discovery: minos.networks.DiscoveryConnector
+  services:
+    - minos.networks.ConsumerService
+    - minos.networks.CommandHandlerService
+    - minos.networks.CommandReplyHandlerService
+    - minos.networks.EventHandlerService
+    - minos.networks.RestService
+    - minos.networks.SnapshotService
+    - minos.networks.ProducerService
+    - minos.networks.PeriodicTaskSchedulerService
+rest:
+  host: {{ rest_host }}
+  port: {{ rest_port }}
+broker:
+  host: {{ broker_host }}
+  port: {{ broker_port }}
+  queue:
+    database: {{ name }}_db
+    user: {{ database_user }}
+    password: {{ database_password }}
+    host: {{ database_host }}
+    port: {{ database_port }}
+    records: 1000
+    retry: 2
+repository:
+  database: {{ name }}_db
+  user: {{ database_user }}
+  password: {{ database_password }}
+  host: {{ database_host }}
+  port: {{ database_port }}
+snapshot:
+  database: {{ name }}_db
+  user: {{ database_user }}
+  password: {{ database_password }}
+  host: {{ database_host }}
+  port: {{ database_port }}
+events:
+  service: src.queries.{{ aggregate }}QueryService
+queries:
+  service: src.queries.{{ aggregate }}QueryService
+commands:
+  service: src.commands.{{ aggregate }}CommandService
+saga:
+  storage:
+    path: ./{{ name }}.lmdb
+discovery:
+  client: minos.networks.MinosDiscoveryClient
+  host: localhost
+  port: 5567
