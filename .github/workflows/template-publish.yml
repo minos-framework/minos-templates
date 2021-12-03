@@ -9,17 +9,20 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
+      - name: Build Microservice Initi Template
+        run: tar -czvf microservice-init.tar.gz -C ${{ github.workspace }}/microservice/init .
+
       - name: Build Microservice Python Skeleton Template
-        run: tar -czvf microservice-python-skeleton.tar.gz -C ${{ github.workspace }}/microservice/python/skeleton .
+        run: tar -czvf microservice-python-skeleton.tar.gz -C ${{ github.workspace }}/microservice/languages/python/skeleton .
 
       - name: Build Microservice Python Package Manager Poetry Template
-        run: tar -czvf microservice-python-package-manager-poetry.tar.gz -C ${{ github.workspace }}/microservice/python/package-manager/poetry .
+        run: tar -czvf microservice-python-package-manager-poetry.tar.gz -C ${{ github.workspace }}/microservice/languages/python/package-manager/poetry .
 
       - name: Build Microservice Python Package Manager Poetry Template
-        run: tar -czvf microservice-python-package-manager-pip.tar.gz -C ${{ github.workspace }}/microservice/python/package-manager/pip .
+        run: tar -czvf microservice-python-package-manager-pip.tar.gz -C ${{ github.workspace }}/microservice/languages/python/package-manager/pip .
 
       - name: Build Project Init Template
-        run: tar -czvf project-init.tar.gz -C ${{ github.workspace }}/project .
+        run: tar -czvf project-init.tar.gz -C ${{ github.workspace }}/project/init .
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -27,6 +30,7 @@ jobs:
         with:
           prerelease: true
           files: |
+            microservice-init.tar.gz
             microservice-python-skeleton.tar.gz
             microservice-python-package-manager-poetry.tar.gz
             microservice-python-package-manager-pip.tar.gz

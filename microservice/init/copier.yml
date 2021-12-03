@@ -1,0 +1,21 @@
+name:
+  type: str
+  help: What is the name of the microservice?
+languaje:
+  type: str
+  link: true
+  help: What programming language do you want to use?
+  choices:
+    python: &python_url "{{ template_root }}/microservice-python-skeleton.tar.gz"
+  default: *python_url
+
+_envops:
+  block_start_string: "{%"
+  block_end_string: "%}"
+  comment_start_string: "{#"
+  comment_end_string: "#}"
+  variable_start_string: "{{"
+  variable_end_string: "}}"
+  keep_trailing_newline: false
+
+_templates_suffix: .jinja
