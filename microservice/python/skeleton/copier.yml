@@ -61,6 +61,14 @@ discovery:
     - minos
     - kong
   help: What is the discovery? [ TODO ]
+package_manager:
+  type: str
+  link: true
+  help: What package manager do you want to use?
+  choices:
+    poetry: &poetry_url {{ template_root }}/microservice-python-package-manager-poetry.tar.gz
+    pip: {{ template_root }}/microservice-python-package-manager-pip.tar.gz
+  default: *poetry_url
 
 _envops:
   block_start_string: "{%"
