@@ -18,8 +18,11 @@ jobs:
       - name: Build Microservice Python Package Manager Poetry Template
         run: tar -czvf microservice-python-package-manager-poetry.tar.gz -C ${{ github.workspace }}/microservice/language/python/package-manager/poetry .
 
-      - name: Build Microservice Python Package Manager Poetry Template
+      - name: Build Microservice Python Package Manager Pip Template
         run: tar -czvf microservice-python-package-manager-pip.tar.gz -C ${{ github.workspace }}/microservice/language/python/package-manager/pip .
+
+      - name: Build Microservice Python Deploy Docker Template
+        run: tar -czvf microservice-python-deploy-docker.tar.gz -C ${{ github.workspace }}/microservice/language/python/deploy/docker .
 
       - name: Build Project Init Template
         run: tar -czvf project-init.tar.gz -C ${{ github.workspace }}/project/init .
@@ -34,5 +37,6 @@ jobs:
             microservice-python-skeleton.tar.gz
             microservice-python-package-manager-poetry.tar.gz
             microservice-python-package-manager-pip.tar.gz
+            microservice-python-deploy-docker.tar.gz
             project-init.tar.gz
 

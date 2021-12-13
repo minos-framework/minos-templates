@@ -69,6 +69,13 @@ package_manager:
     poetry: &poetry_url "{{ template_root }}/microservice-python-package-manager-poetry.tar.gz"
     pip: "{{ template_root }}/microservice-python-package-manager-pip.tar.gz"
   default: *poetry_url
+deploy:
+  type: str
+  link: true
+  help: What deploy system do you want to use?
+  choices:
+    docker: &docker_url "{{ template_root }}/microservice-python-deploy-docker.tar.gz"
+  default: *docker_url
 
 _envops:
   block_start_string: "{%"
