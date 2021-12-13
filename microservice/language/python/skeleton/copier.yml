@@ -11,9 +11,9 @@ aggregate:
   help: What is the name of the microservices's Aggregate?
 database:
   type: str
-  default: postgresql
+  default: postgres
   choices:
-    - postgresql
+    - postgres
   help: What is the database? [ TODO ]
 database_host:
   type: str
@@ -32,16 +32,16 @@ database_password:
   default: min0s
   secret: true
   help: What is the database's password?
-broker_host:
-  type: str
-  default: localhost
-  help: What is the broker's host?
 broker:
   type: str
   default: kafka
   choices:
     - kafka
   help: What is the broker? [ TODO ]
+broker_host:
+  type: str
+  default: localhost
+  help: What is the broker's host?
 broker_port:
   type: str
   default: "9092"
