@@ -24,6 +24,9 @@ jobs:
       - name: Build Microservice Python Deploy Docker Template
         run: tar -czvf microservice-python-deploy-docker.tar.gz -C ${{ github.workspace }}/microservice/language/python/deploy/docker .
 
+      - name: Build Microservice Python Deploy Kubernetes Template
+        run: tar -czvf microservice-python-deploy-kubernetes.tar.gz -C ${{ github.workspace }}/microservice/language/python/deploy/kubernetes .
+
       - name: Build Project Init Template
         run: tar -czvf project-init.tar.gz -C ${{ github.workspace }}/project/init .
 
@@ -38,5 +41,6 @@ jobs:
             microservice-python-package-manager-poetry.tar.gz
             microservice-python-package-manager-pip.tar.gz
             microservice-python-deploy-docker.tar.gz
+            microservice-python-deploy-kubernetes.tar.gz
             project-init.tar.gz
 
