@@ -6,7 +6,7 @@ languaje:
   link: true
   help: What programming language do you want to use?
   choices:
-    python: &python_url "{{ template_root }}/microservice-python-skeleton.tar.gz"
+    python: &python_url "{{ template_registry }}/microservice-python-skeleton.tar.gz"
   default: *python_url
 
 _envops:

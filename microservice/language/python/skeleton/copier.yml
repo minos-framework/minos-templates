@@ -66,15 +66,16 @@ package_manager:
   link: true
   help: What package manager do you want to use?
   choices:
-    poetry: &poetry_url "{{ template_root }}/microservice-python-package-manager-poetry.tar.gz"
-    pip: "{{ template_root }}/microservice-python-package-manager-pip.tar.gz"
+    poetry: &poetry_url "{{ template_registry }}/microservice-python-package-manager-poetry.tar.gz"
+    pip: "{{ template_registry }}/microservice-python-package-manager-pip.tar.gz"
   default: *poetry_url
 deploy:
   type: str
   link: true
   help: What deploy system do you want to use?
   choices:
-    docker: &docker_url "{{ template_root }}/microservice-python-deploy-docker.tar.gz"
+    docker: &docker_url "{{ template_registry }}/microservice-python-deploy-docker.tar.gz"
+    kubernetes: "{{ template_registry }}/microservice-python-deploy-kubernetes.tar.gz"
   default: *docker_url
 
 _envops:
