@@ -13,13 +13,13 @@ jobs:
         run: tar -czvf microservice-init.tar.gz -C ${{ github.workspace }}/microservice/init .
 
       - name: Build Microservice Python Skeleton Template
-        run: tar -czvf microservice-python-skeleton.tar.gz -C ${{ github.workspace }}/microservice/languages/python/skeleton .
+        run: tar -czvf microservice-python-skeleton.tar.gz -C ${{ github.workspace }}/microservice/language/python/skeleton .
 
       - name: Build Microservice Python Package Manager Poetry Template
-        run: tar -czvf microservice-python-package-manager-poetry.tar.gz -C ${{ github.workspace }}/microservice/languages/python/package-manager/poetry .
+        run: tar -czvf microservice-python-package-manager-poetry.tar.gz -C ${{ github.workspace }}/microservice/language/python/package-manager/poetry .
 
       - name: Build Microservice Python Package Manager Poetry Template
-        run: tar -czvf microservice-python-package-manager-pip.tar.gz -C ${{ github.workspace }}/microservice/languages/python/package-manager/pip .
+        run: tar -czvf microservice-python-package-manager-pip.tar.gz -C ${{ github.workspace }}/microservice/language/python/package-manager/pip .
 
       - name: Build Project Init Template
         run: tar -czvf project-init.tar.gz -C ${{ github.workspace }}/project/init .
