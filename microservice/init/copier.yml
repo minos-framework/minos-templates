@@ -1,7 +1,7 @@
 name:
   type: str
   help: What is the name of the microservice?
-languaje:
+language:
   type: str
   link: true
   help: What programming language do you want to use?
