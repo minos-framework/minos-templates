@@ -8,6 +8,7 @@ version:
   type: str
   help: What is the version of the project?
   default: 0.1.0
+
 _envops:
   block_start_string: "{%"
   block_end_string: "%}"
@@ -16,3 +17,5 @@ _envops:
   variable_start_string: "{{"
   variable_end_string: "}}"
   keep_trailing_newline: false
+
+_templates_suffix: .jinja
