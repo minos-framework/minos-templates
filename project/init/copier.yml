@@ -13,8 +13,45 @@ project_deploy:
   link: true
   help: What deploy system do you want to use?
   choices:
-    docker_compose: &docker_compose "{{ template_registry }}/project-deploy-docker-compose.tar.gz"
-  default: *docker_compose
+    docker_compose: &docker_compose_url "{{ template_registry }}/project-deploy-docker-compose.tar.gz"
+  default: *docker_compose_url
+project_database_postgres:
+  type: str
+  link: true
+  help: Do you want to use postgres?
+  choices:
+    yes: &postgres_url "{{ template_registry }}/project-database-postgres.tar.gz"
+    no: ""
+  default: *postgres_url
+project_database_redis:
+  type: str
+  link: true
+  help: Do you want to use redis?
+  choices:
+    yes: &redis_url "{{ template_registry }}/project-database-redis.tar.gz"
+    no: ""
+  default: *redis_url
+project_broker:
+  type: str
+  link: true
+  help: What broker do you want to use?
+  choices:
+    kafka: &kafka_url "{{ template_registry }}/project-broker-kafka.tar.gz"
+  default: *kafka_url
+project_api_gateway:
+  type: str
+  link: true
+  help: What API Gateway do you want to use?
+  choices:
+    minos: &minos_api_gateway_url "{{ template_registry }}/project-broker-kafka.tar.gz"
+  default: *minos_api_gateway_url
+project_discovery:
+  type: str
+  link: true
+  help: What Discovery do you want to use?
+  choices:
+    minos: &minos_discovery_url "{{ template_registry }}/project-broker-kafka.tar.gz"
+  default: *minos_discovery_url
 
 _envops:
   block_start_string: "{%"

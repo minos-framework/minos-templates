@@ -1,0 +1,10 @@
+{% include (destination / "docker-compose.yml").as_posix() %}
+
+  discovery:
+    restart: always
+    build: external/discovery
+    environment:
+      - DISCOVERY_SERVICE_DB_HOST=redis
+    depends_on:
+      - redis
+

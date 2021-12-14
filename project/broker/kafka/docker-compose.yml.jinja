@@ -1,0 +1,20 @@
+{% include (destination / "docker-compose.yml").as_posix() %}
+
+  zookeeper:
+    restart: always
+    image: wurstmeister/zookeeper:latest
+
+  kafka:
+    restart: always
+    image: wurstmeister/kafka:latest
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    volumes:
+      - kafka_volume:/kafka
+    environment:
+      KAFKA_DELETE_TOPIC_ENABLE: "true"
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181

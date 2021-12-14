@@ -30,8 +30,23 @@ jobs:
       - name: Build Project Init Template
         run: tar -czvf project-init.tar.gz -C ${{ github.workspace }}/project/init .
 
+      - name: Build Project API Gateway Minos Template
+        run: tar -czvf project-api-gateway-minos.tar.gz -C ${{ github.workspace }}/project/api-gateway/minos .
+
+      - name: Build Project Broker Kafka Template
+        run: tar -czvf project-broker-kafka.tar.gz -C ${{ github.workspace }}/project/broker/kafka .
+
+      - name: Build Project Database Postgres Template
+        run: tar -czvf project-database-postgres.tar.gz -C ${{ github.workspace }}/project/database/postgres .
+
+      - name: Build Project Database Redis Template
+        run: tar -czvf project-database-redis.tar.gz -C ${{ github.workspace }}/project/database/redis .
+
       - name: Build Project Deploy Docker Compose Template
         run: tar -czvf project-deploy-docker-compose.tar.gz -C ${{ github.workspace }}/project/deploy/docker-compose .
+
+      - name: Build Project Discovery Minos Template
+        run: tar -czvf project-discovery-minos.tar.gz -C ${{ github.workspace }}/project/discovery/minos .
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -46,5 +61,10 @@ jobs:
             microservice-python-deploy-docker.tar.gz
             microservice-python-deploy-kubernetes.tar.gz
             project-init.tar.gz
+            project-api-gateway-minos.tar.gz
+            project-broker-kafka.tar.gz
+            project-database-postgres.tar.gz
+            project-database-redis.tar.gz
             project-deploy-docker-compose.tar.gz
+            project-discovery-minos.tar.gz
 
