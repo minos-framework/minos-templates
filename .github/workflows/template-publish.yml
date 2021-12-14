@@ -31,7 +31,7 @@ jobs:
         run: tar -czvf project-init.tar.gz -C ${{ github.workspace }}/project/init .
 
       - name: Build Project Deploy Docker Compose Template
-        run: tar -czvf project-deploy-docker-compose.tar.gz -C ${{ github.workspace }}/microservice/project/deploy/docker-compose .
+        run: tar -czvf project-deploy-docker-compose.tar.gz -C ${{ github.workspace }}/project/deploy/docker-compose .
 
       - name: Release
         uses: softprops/action-gh-release@v1
