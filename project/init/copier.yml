@@ -1,13 +1,20 @@
-name:
+project_name:
   type: str
   help: What is the name of the project?
-description:
+project_description:
   type: str
   help: What is the description of the project?
-version:
+project_version:
   type: str
   help: What is the version of the project?
   default: 0.1.0
+project_deploy:
+  type: str
+  link: true
+  help: What deploy system do you want to use?
+  choices:
+    docker_compose: &docker_compose "{{ template_registry }}/project-deploy-docker-compose.tar.gz"
+  default: *docker_compose
 
 _envops:
   block_start_string: "{%"
