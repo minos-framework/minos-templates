@@ -1,4 +1,4 @@
-{% include str(destination / "Makefile") %}
+{% include (destination / "Makefile").as_posix() %}
 
 build:
 	docker build --no-cache -t {{ project_name }}_{{ name }} -f deploy/Dockerfile .
