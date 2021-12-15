@@ -28,7 +28,7 @@ project_database_redis:
   link: true
   help: Do you want to use redis?
   choices:
-    yes: &redis_url "{{ template_registry }}/project-database-redis.tar.gz"
+    yes: &redis_url "{{ template_registry }}/project-database-redis-init.tar.gz"
     no: ""
   default: *redis_url
 project_broker:
