@@ -49,7 +49,7 @@ jobs:
         run: tar -czvf project-database-postgres-deploy-remote.tar.gz -C ${{ github.workspace }}/project/database/postgres/deploy/remote .
 
       - name: Build Project Database Redis Init Template
-        run: tar -czvf project-database-redis.tar.gz -C ${{ github.workspace }}/project/database/redis/init .
+        run: tar -czvf project-database-redis-init.tar.gz -C ${{ github.workspace }}/project/database/redis/init .
 
       - name: Build Project Database Redis Deploy Docker Compose Template
         run: tar -czvf project-database-redis-deploy-docker-compose.tar.gz -C ${{ github.workspace }}/project/database/redis/deploy/docker-compose .
