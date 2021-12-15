@@ -19,7 +19,7 @@ project_deploy:
 project_database_postgres:
   type: str
   link: true
-  help: Do you want to use postgres?
+  help: Do you want to use the Postgres database?
   choices:
     yes: &postgres_url "{{ template_registry }}/project-database-postgres-init.tar.gz"
     no: ""
@@ -27,7 +27,7 @@ project_database_postgres:
 project_database_redis:
   type: str
   link: true
-  help: Do you want to use redis?
+  help: Do you want to use the Redis database?
   choices:
     yes: &redis_url "{{ template_registry }}/project-database-redis-init.tar.gz"
     no: ""
@@ -37,7 +37,7 @@ project_broker:
   link: true
   help: What broker do you want to use?
   choices:
-    kafka: &kafka_url "{{ template_registry }}/project-broker-kafka.tar.gz"
+    kafka: &kafka_url "{{ template_registry }}/project-broker-kafka-init.tar.gz"
   default: *kafka_url
 project_api_gateway:
   type: str
