@@ -20,7 +20,7 @@ project_database_postgres:
   link: true
   help: Do you want to use postgres?
   choices:
-    yes: &postgres_url "{{ template_registry }}/project-database-postgres.tar.gz"
+    yes: &postgres_url "{{ template_registry }}/project-database-postgres-init.tar.gz"
     no: ""
   default: *postgres_url
 project_database_redis:

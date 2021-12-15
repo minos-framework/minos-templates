@@ -36,8 +36,17 @@ jobs:
       - name: Build Project Broker Kafka Template
         run: tar -czvf project-broker-kafka.tar.gz -C ${{ github.workspace }}/project/broker/kafka .
 
-      - name: Build Project Database Postgres Template
-        run: tar -czvf project-database-postgres.tar.gz -C ${{ github.workspace }}/project/database/postgres .
+      - name: Build Project Database Postgres Init Template
+        run: tar -czvf project-database-postgres-init.tar.gz -C ${{ github.workspace }}/project/database/postgres/init .
+
+      - name: Build Project Database Postgres Deploy Docker Compose Template
+        run: tar -czvf project-database-postgres-deploy-docker-compose.tar.gz -C ${{ github.workspace }}/project/database/postgres/deploy/docker-compose .
+
+      - name: Build Project Database Postgres Deploy Kubernetes Template
+        run: tar -czvf project-database-postgres-deploy-kubernetes.tar.gz -C ${{ github.workspace }}/project/database/postgres/deploy/kubernetes .
+
+      - name: Build Project Database Postgres Deploy Remote Template
+        run: tar -czvf project-database-postgres-deploy-remote.tar.gz -C ${{ github.workspace }}/project/database/postgres/deploy/remote .
 
       - name: Build Project Database Redis Template
         run: tar -czvf project-database-redis.tar.gz -C ${{ github.workspace }}/project/database/redis .
@@ -63,7 +72,10 @@ jobs:
             project-init.tar.gz
             project-api-gateway-minos.tar.gz
             project-broker-kafka.tar.gz
-            project-database-postgres.tar.gz
+            project-database-postgres-init.tar.gz
+            project-database-postgres-deploy-docker-compose.tar.gz
+            project-database-postgres-deploy-kubernetes.tar.gz
+            project-database-postgres-deploy-remote.tar.gz
             project-database-redis.tar.gz
             project-deploy-docker-compose.tar.gz
             project-discovery-minos.tar.gz
