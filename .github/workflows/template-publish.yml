@@ -30,8 +30,8 @@ jobs:
       - name: Build Project Init Template
         run: tar -czvf project-init.tar.gz -C ${{ github.workspace }}/project/init .
 
-      - name: Build Project API Gateway Minos Template
-        run: tar -czvf project-api-gateway-minos.tar.gz -C ${{ github.workspace }}/project/api-gateway/minos .
+      - name: Build Project API Gateway Minos Init Template
+        run: tar -czvf project-api-gateway-minos-init.tar.gz -C ${{ github.workspace }}/project/api-gateway/minos/init .
 
       - name: Build Project API Gateway Minos Deploy Docker Compose Template
         run: tar -czvf project-api-gateway-minos-deploy-docker-compose.tar.gz -C ${{ github.workspace }}/project/api-gateway/minos/deploy/docker-compose .
@@ -101,6 +101,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           prerelease: true
+          fail_on_unmatched_files: true
           files: |
             microservice-init.tar.gz
             microservice-python-init.tar.gz
