@@ -20,16 +20,16 @@ project_database_postgres:
   link: true
   help: Do you want to use postgres?
   choices:
-    yes_: &postgres_url "{{ template_registry }}/project-database-postgres.tar.gz"
-    no_: ""
+    yes: &postgres_url "{{ template_registry }}/project-database-postgres.tar.gz"
+    no: ""
   default: *postgres_url
 project_database_redis:
   type: str
   link: true
   help: Do you want to use redis?
   choices:
-    yes_: &redis_url "{{ template_registry }}/project-database-redis.tar.gz"
-    no_: ""
+    yes: &redis_url "{{ template_registry }}/project-database-redis.tar.gz"
+    no: ""
   default: *redis_url
 project_broker:
   type: str
