@@ -44,7 +44,7 @@ project_api_gateway:
   link: true
   help: What API Gateway do you want to use?
   choices:
-    minos: &minos_api_gateway_url "{{ template_registry }}/project-api-gateway-minos.tar.gz"
+    minos: &minos_api_gateway_url "{{ template_registry }}/project-api-gateway-minos-init.tar.gz"
   default: *minos_api_gateway_url
 project_discovery:
   type: str

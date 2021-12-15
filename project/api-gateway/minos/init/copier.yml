@@ -1,0 +1,20 @@
+postgres_deploy:
+  type: str
+  link: true
+  help: Where will be the Minos API Gateway located?
+  choices:
+    docker_compose: &docker_compose_url "{{ template_registry }}/project-api-gateway-minos-deploy-docker-compose.tar.gz"
+    kubernetes: "{{ template_registry }}/project-api-gateway-minos-deploy-kubernetes.tar.gz"
+    remote: "{{ template_registry }}/project-api-gateway-minos-deploy-remote.tar.gz"
+  default: *docker_compose_url
+
+_envops:
+  block_start_string: "{%"
+  block_end_string: "%}"
+  comment_start_string: "{#"
+  comment_end_string: "#}"
+  variable_start_string: "{{"
+  variable_end_string: "}}"
+  keep_trailing_newline: false
+
+_templates_suffix: .jinja

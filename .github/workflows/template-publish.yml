@@ -33,6 +33,15 @@ jobs:
       - name: Build Project API Gateway Minos Template
         run: tar -czvf project-api-gateway-minos.tar.gz -C ${{ github.workspace }}/project/api-gateway/minos .
 
+      - name: Build Project API Gateway Minos Deploy Docker Compose Template
+        run: tar -czvf project-api-gateway-minos-deploy-docker-compose.tar.gz -C ${{ github.workspace }}/project/api-gateway/minos/deploy/docker-compose .
+
+      - name: Build Project API Gateway Minos Deploy Kubernetes Template
+        run: tar -czvf project-api-gateway-minos-deploy-kubernetes.tar.gz -C ${{ github.workspace }}/project/api-gateway/minos/deploy/kubernetes .
+
+      - name: Build Project API Gateway Minos Deploy Remote Template
+        run: tar -czvf project-api-gateway-minos-deploy-remote.tar.gz -C ${{ github.workspace }}/project/api-gateway/minos/deploy/remote .
+
       - name: Build Project Broker Kafka Init Template
         run: tar -czvf project-broker-kafka-init.tar.gz -C ${{ github.workspace }}/project/broker/kafka/init .
 
@@ -100,7 +109,10 @@ jobs:
             microservice-python-deploy-docker.tar.gz
             microservice-python-deploy-kubernetes.tar.gz
             project-init.tar.gz
-            project-api-gateway-minos.tar.gz
+            project-api-gateway-minos-init.tar.gz
+            project-api-gateway-minos-deploy-docker-compose.tar.gz
+            project-api-gateway-minos-deploy-kubernetes.tar.gz
+            project-api-gateway-minos-deploy-remote.tar.gz
             project-broker-kafka-init.tar.gz
             project-broker-kafka-deploy-docker-compose.tar.gz
             project-broker-kafka-deploy-kubernetes.tar.gz
