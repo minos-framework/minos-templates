@@ -72,8 +72,20 @@ jobs:
       - name: Build Project Deploy Docker Compose Template
         run: tar -czvf project-deploy-docker-compose.tar.gz -C ${{ github.workspace }}/project/deploy/docker-compose .
 
-      - name: Build Project Discovery Minos Template
-        run: tar -czvf project-discovery-minos.tar.gz -C ${{ github.workspace }}/project/discovery/minos .
+      - name: Build Project Discovery Minos Init Template
+        run: tar -czvf project-discovery-minos-init.tar.gz -C ${{ github.workspace }}/project/discovery/minos/init .
+        
+      - name: Build Project Discovery Minos Deploy Docker Compose Template
+        run: tar -czvf project-discovery-minos-deploy-docker-compose.tar.gz -C ${{ github.workspace }}/project/discovery/minos/deploy/docker-compose .
+
+      - name: Build Project Discovery Minos Deploy Kubernetes Template
+        run: tar -czvf project-discovery-minos-deploy-kubernetes.tar.gz -C ${{ github.workspace }}/project/discovery/minos/deploy/kubernetes .
+
+      - name: Build Project Discovery Minos Deploy Remote Template
+        run: tar -czvf project-discovery-minos-deploy-remote.tar.gz -C ${{ github.workspace }}/project/discovery/minos/deploy/remote .
+
+      - name: Build Project Deploy Docker Compose Template
+        run: tar -czvf project-deploy-docker-compose.tar.gz -C ${{ github.workspace }}/project/deploy/docker-compose .
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -102,5 +114,8 @@ jobs:
             project-database-redis-deploy-kubernetes.tar.gz
             project-database-redis-deploy-remote.tar.gz
             project-deploy-docker-compose.tar.gz
-            project-discovery-minos.tar.gz
+            project-discovery-minos-init.tar.gz
+            project-discovery-minos-deploy-docker-compose.tar.gz
+            project-discovery-minos-deploy-kubernetes.tar.gz
+            project-discovery-minos-deploy-remote.tar.gz
 
