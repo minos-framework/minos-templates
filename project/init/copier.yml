@@ -4,6 +4,7 @@ project_name:
 project_description:
   type: str
   help: What is the description of the project?
+  default: "This is the {{ project_name }} project."
 project_version:
   type: str
   help: What is the version of the project?
