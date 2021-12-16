@@ -3,7 +3,7 @@
 set -euo
 
 ROOT_DIR=$(dirname "$0")
-BUILD_DIR=$(dirname "$0").build
+BUILD_DIR=$(dirname "$0")/.build
 
 mkdir -p "$BUILD_DIR"
 
