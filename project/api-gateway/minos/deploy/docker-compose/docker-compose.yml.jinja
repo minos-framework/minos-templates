@@ -1,13 +1,1 @@
-{% include (destination / "docker-compose.yml").as_posix() %}
-
-  api-gateway:
-    restart: always
-    build: external/api_gateway
-    ports:
-      - "5566:5566"
-    environment:
-      - PYTHONPATH=/api_gateway
-      - DISCOVERY_SERVICE_HOST=discovery
-      - API_GATEWAY_DISCOVERY_HOST=discovery
-    depends_on:
-      - discovery
+{{ build_docker_compose(destination / "docker-compose.yml") }}

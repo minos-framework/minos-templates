@@ -1,4 +1,3 @@
-
 _envops:
   block_start_string: "{%"
   block_end_string: "%}"
@@ -9,3 +8,10 @@ _envops:
   keep_trailing_newline: false
 
 _templates_suffix: .jinja
+
+_exclude:
+  - "copier.yml"
+  - "_utils.py"
+
+_functions:
+  - "_utils.build_docker_compose"

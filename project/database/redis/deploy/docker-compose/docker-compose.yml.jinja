@@ -1,5 +1,1 @@
-{% include (destination / "docker-compose.yml").as_posix() %}
-
-  redis:
-    image: redis:latest
-    command: "redis-server"
+{{ build_docker_compose(destination / "docker-compose.yml") }}

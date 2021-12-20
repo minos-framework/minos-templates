@@ -1,13 +1,1 @@
-{% include (destination / "docker-compose.yml").as_posix() %}
-
-  postgres:
-    restart: always
-    build: external/postgres
-    command: postgres -c 'max_connections=200'
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_volume:/var/lib/postgresql
-    environment:
-      - POSTGRES_USER=minos
-      - POSTGRES_PASSWORD=min0s
+{{ build_docker_compose(destination / "docker-compose.yml") }}
