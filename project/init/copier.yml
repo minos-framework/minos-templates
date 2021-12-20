@@ -15,6 +15,7 @@ project_deploy:
   help: What deploy system do you want to use?
   choices:
     docker_compose: &docker_compose_url "{{ template_registry }}/project-deploy-docker-compose.tar.gz"
+    kubernetes: "{{ template_registry }}/project-deploy-kubernetes.tar.gz"
   default: *docker_compose_url
 project_database_postgres:
   type: str

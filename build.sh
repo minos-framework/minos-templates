@@ -93,3 +93,6 @@ tar -czf "$BUILD_DIR/project-discovery-minos-deploy-remote.tar.gz" -C "$ROOT_DIR
 
 echo "Building Project Deploy Docker Compose Template..."
 tar -czf "$BUILD_DIR/project-deploy-docker-compose.tar.gz" -C "$ROOT_DIR/project/deploy/docker-compose" .
+
+echo "Building Project Deploy Kubernetes Template..."
+tar -czf "$BUILD_DIR/project-deploy-kubernetes.tar.gz" -C "$ROOT_DIR/project/deploy/kubernetes" .

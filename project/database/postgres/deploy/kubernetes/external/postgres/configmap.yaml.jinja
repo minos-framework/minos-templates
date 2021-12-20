@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: {{ project_name }}
+  labels:
+    app: postgres
+data:
+  POSTGRES_PASSWORD:  p0stgres

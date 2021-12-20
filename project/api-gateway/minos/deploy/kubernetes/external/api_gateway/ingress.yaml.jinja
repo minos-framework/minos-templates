@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: {{ project_name }}
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: apigateway
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - backend:
+              service:
+                name: apigateway
+                port:
+                  number: 5566
+            path: /
+            pathType: Prefix
