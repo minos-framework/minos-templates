@@ -6,7 +6,7 @@ import yaml
 
 
 def build_docker_compose(path: Path) -> str:
-    """Build Docker Compose file content.."""
+    """Build Docker Compose file content."""
 
     if not path.exists():
         raise ValueError("A base Compose file must exist.")
