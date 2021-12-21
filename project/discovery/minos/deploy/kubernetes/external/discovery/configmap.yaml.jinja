@@ -4,6 +4,8 @@ metadata:
   name: discovery-config
   namespace: {{ project_name }}
   labels:
-    app: discovery
+    app: {{ project_name }}-discovery
 data:
+  DISCOVERY_SERVICE_PORT: "5567"
   DISCOVERY_SERVICE_DB_HOST: {{ project_name }}-redis.{{ project_name }}.svc.cluster.local
+  DISCOVERY_SERVICE_DB_PORT: "6379"

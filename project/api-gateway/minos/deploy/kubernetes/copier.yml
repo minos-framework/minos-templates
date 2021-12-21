@@ -2,11 +2,6 @@ project_name:
   type: str
   help: What is the name of the project?
 
-kubernetes_registry:
-  type: str
-  help: What is the kubernetes registry?
-  default: localhost:5000
-
 _envops:
   block_start_string: "{%"
   block_end_string: "%}"

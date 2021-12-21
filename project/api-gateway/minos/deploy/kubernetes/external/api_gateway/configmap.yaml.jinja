@@ -6,7 +6,7 @@ metadata:
   labels:
     app: apigateway
 data:
-  PYTHONPATH: /api_gateway
-  DISCOVERY_SERVICE_HOST: discovery.{{ project_name }}.svc.cluster.local
-  API_GATEWAY_DISCOVERY_HOST: discovery.{{ project_name }}.svc.cluster.local
-  API_GATEWAY_REST_AUTH_HOST: {{ project_name }}-authentication.{{ project_name }}.svc.cluster.local
+  API_GATEWAY_REST_PORT: "5566"
+  API_GATEWAY_DISCOVERY_PORT: "5567"
+  API_GATEWAY_DISCOVERY_HOST: "discovery.{{ project_name }}.svc.cluster.local"
+  API_GATEWAY_REST_AUTH_ENABLED: "false"

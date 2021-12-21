@@ -1,8 +1,4 @@
 build:
-	docker build --no-cache -t {{ project_name }}_discovery .
-	docker tag {{ project_name }}_discovery:latest {{ kubernetes_registry }}/{{ project_name }}_discovery:0.0.1
-	docker push {{ kubernetes_registry }}/{{ project_name }}_discovery:0.0.1
-
 	kubectl create -f ./configmap.yaml
 	kubectl create -f ./service.yaml
 	kubectl create -f ./deployment.yaml
