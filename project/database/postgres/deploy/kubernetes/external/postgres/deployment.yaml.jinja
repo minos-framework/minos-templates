@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: {{ project_name }}-postgres
   namespace: {{ project_name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: postgres
+      app.kubernetes.io/name: {{ project_name }}-postgres
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: postgres
+        app.kubernetes.io/name: {{ project_name }}-postgres
     spec:
       containers:
         - name: postgres
