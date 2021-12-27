@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -euo
+set -e
 
 ROOT_DIR=$(dirname "$0")
 BUILD_DIR=$(dirname "$0")/.build
