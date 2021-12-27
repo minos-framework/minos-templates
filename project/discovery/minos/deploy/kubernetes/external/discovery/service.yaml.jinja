@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ project_name }}-discovery
+  name: minos-discovery
   namespace: {{ project_name }}
 spec:
   type: ClusterIP
@@ -9,4 +9,4 @@ spec:
     - port: 5567
       targetPort: 5567
   selector:
-   app.kubernetes.io/name: {{ project_name }}-discovery
+   app.kubernetes.io/name: minos-discovery

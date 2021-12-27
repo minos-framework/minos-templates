@@ -7,6 +7,7 @@ metadata:
     app: kafka
 data:
     KAFKA_DELETE_TOPIC_ENABLE: "true"
-    KAFKA_ADVERTISED_HOST_NAME: "{{ project_name }}-kafka.{{ project_name }}.svc.cluster.local"
+    KAFKA_PORT: "9092"
+    KAFKA_ADVERTISED_HOST_NAME: "kafka.{{ project_name }}.svc.cluster.local"
     KAFKA_ADVERTISED_PORT: "9092"
-    KAFKA_ZOOKEEPER_CONNECT: "{{ project_name }}-zookeeper.{{ project_name }}.svc.cluster.local:2181"
+    KAFKA_ZOOKEEPER_CONNECT: "zookeeper.{{ project_name }}.svc.cluster.local:2181"

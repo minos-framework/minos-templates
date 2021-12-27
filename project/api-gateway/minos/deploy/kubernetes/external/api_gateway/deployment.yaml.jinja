@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ project_name }}-apigateway
+  name: minos-apigateway
   namespace: {{ project_name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ project_name }}-apigateway
+      app.kubernetes.io/name: minos-apigateway
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ project_name }}-apigateway
+        app.kubernetes.io/name: minos-apigateway
     spec:
       containers:
         - name: apigateway

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ project_name }}-kafka
+  name: kafka
   namespace: {{ project_name }}
 spec:
   type: ClusterIP
@@ -9,4 +9,4 @@ spec:
     - port: 9092
       targetPort: 9092
   selector:
-   app.kubernetes.io/name: {{ project_name }}-kafka
+   app.kubernetes.io/name: kafka

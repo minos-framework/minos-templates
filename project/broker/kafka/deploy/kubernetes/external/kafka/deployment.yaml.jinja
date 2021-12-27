@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ project_name }}-kafka
+  name: kafka
   namespace: {{ project_name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ project_name }}-kafka
+      app.kubernetes.io/name: kafka
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ project_name }}-kafka
+        app.kubernetes.io/name: kafka
     spec:
       containers:
-        - name: {{ project_name }}-kafka
+        - name: kafka
           image: wurstmeister/kafka:latest
           imagePullPolicy: "IfNotPresent"
           ports:
