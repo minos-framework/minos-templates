@@ -14,4 +14,4 @@ _envops:
 _templates_suffix: .jinja
 
 _tasks:
-  - make -C ./external/postgres build
+  - make -s -C external/postgres build

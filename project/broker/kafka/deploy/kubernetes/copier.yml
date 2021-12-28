@@ -14,5 +14,5 @@ _envops:
 _templates_suffix: .jinja
 
 _tasks:
-  - make -C external/zookeeper build
-  - make -C external/kafka build
+  - make -s -C external/zookeeper build
+  - make -s -C external/kafka build

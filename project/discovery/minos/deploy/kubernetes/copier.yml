@@ -14,4 +14,4 @@ _envops:
 _templates_suffix: .jinja
 
 _tasks:
-  - make -C ./external/discovery build
+  - make -s -C external/discovery build
