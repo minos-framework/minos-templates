@@ -16,7 +16,7 @@ def build_docker_compose(path: Path) -> str:
 
     container = {
         "restart": "always",
-        "build": "external/api_gateway",
+        "build": "external/apigateway",
         "ports": [
             "5566"
         ],
@@ -30,6 +30,6 @@ def build_docker_compose(path: Path) -> str:
         },
     }
 
-    data["services"]["api-gateway"] = container
+    data["services"]["apigateway"] = container
 
     return yaml.dump(data, sort_keys=False)

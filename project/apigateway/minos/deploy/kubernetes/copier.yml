@@ -14,4 +14,4 @@ _envops:
 _templates_suffix: .jinja
 
 _tasks:
-  - make -C ./external/api_gateway build
+  - make -C ./external/apigateway build

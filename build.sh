@@ -29,16 +29,16 @@ echo "Building Project Init Template..."
 tar -czf "$BUILD_DIR/project-init.tar.gz" -C "$ROOT_DIR/project/init" .
 
 echo "Building Project API Gateway Minos Init Template..."
-tar -czf "$BUILD_DIR/project-api-gateway-minos-init.tar.gz" -C "$ROOT_DIR/project/api-gateway/minos/init" .
+tar -czf "$BUILD_DIR/project-apigateway-minos-init.tar.gz" -C "$ROOT_DIR/project/apigateway/minos/init" .
 
 echo "Building Project API Gateway Minos Deploy Docker Compose Template..."
-tar -czf "$BUILD_DIR/project-api-gateway-minos-deploy-docker-compose.tar.gz" -C "$ROOT_DIR/project/api-gateway/minos/deploy/docker-compose" .
+tar -czf "$BUILD_DIR/project-apigateway-minos-deploy-docker-compose.tar.gz" -C "$ROOT_DIR/project/apigateway/minos/deploy/docker-compose" .
 
 echo "Building Project API Gateway Minos Deploy Kubernetes Template..."
-tar -czf "$BUILD_DIR/project-api-gateway-minos-deploy-kubernetes.tar.gz" -C "$ROOT_DIR/project/api-gateway/minos/deploy/kubernetes" .
+tar -czf "$BUILD_DIR/project-apigateway-minos-deploy-kubernetes.tar.gz" -C "$ROOT_DIR/project/apigateway/minos/deploy/kubernetes" .
 
 echo "Building Project API Gateway Minos Deploy Remote Template..."
-tar -czf "$BUILD_DIR/project-api-gateway-minos-deploy-remote.tar.gz" -C "$ROOT_DIR/project/api-gateway/minos/deploy/remote" .
+tar -czf "$BUILD_DIR/project-apigateway-minos-deploy-remote.tar.gz" -C "$ROOT_DIR/project/apigateway/minos/deploy/remote" .
 
 echo "Building Project Broker Kafka Init Template..."
 tar -czf "$BUILD_DIR/project-broker-kafka-init.tar.gz" -C "$ROOT_DIR/project/broker/kafka/init" .
