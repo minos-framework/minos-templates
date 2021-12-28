@@ -16,6 +16,6 @@ spec:
       containers:
         - name: zookeeper
           image: wurstmeister/zookeeper:latest
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: Always
           ports:
             - containerPort: 2181

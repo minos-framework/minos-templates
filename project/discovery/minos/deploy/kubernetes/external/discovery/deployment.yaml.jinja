@@ -16,7 +16,7 @@ spec:
       containers:
         - name: discovery
           image: ghcr.io/clariteia/minos-discovery:0.0.8
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: Always
           ports:
             - containerPort: 5567
           envFrom:

@@ -16,7 +16,7 @@ spec:
       containers:
         - name: {{ project_name }}-{{ name }}
           image: {{ kubernetes_registry }}/{{ project_name }}-{{ name }}:{{ version }}
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ rest_port }}
           envFrom:

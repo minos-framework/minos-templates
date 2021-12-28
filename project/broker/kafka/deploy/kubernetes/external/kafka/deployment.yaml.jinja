@@ -16,7 +16,7 @@ spec:
       containers:
         - name: kafka
           image: wurstmeister/kafka:latest
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: Always
           ports:
             - containerPort: 9092
           envFrom:

@@ -16,7 +16,7 @@ spec:
       containers:
         - name: apigateway
           image: ghcr.io/clariteia/minos-apigateway:0.1.0
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: Always
           ports:
             - containerPort: 5566
           envFrom:
