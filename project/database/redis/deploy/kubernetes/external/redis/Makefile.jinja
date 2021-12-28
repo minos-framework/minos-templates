@@ -1,3 +1,6 @@
 build:
-	kubectl create -f ./service.yaml
-	kubectl create -f ./deployment.yaml
+	kubectl apply -f service.yaml > /dev/null
+	kubectl apply -f deployment.yaml > /dev/null
+
+restart:
+	kubectl rollout restart --namespace={{ project_name }} deployment redis > /dev/null

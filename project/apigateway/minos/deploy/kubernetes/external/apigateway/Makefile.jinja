@@ -1,5 +1,8 @@
 build:
-	kubectl create -f ./configmap.yaml
-	kubectl create -f ./service.yaml
-	kubectl create -f ./deployment.yaml
-	kubectl create -f ./ingress.yaml
+	kubectl apply -f configmap.yaml > /dev/null
+	kubectl apply -f service.yaml > /dev/null
+	kubectl apply -f deployment.yaml > /dev/null
+	kubectl apply -f ingress.yaml > /dev/null
+
+restart:
+	kubectl rollout restart --namespace={{ project_name }} deployment minos-apigateway > /dev/null
