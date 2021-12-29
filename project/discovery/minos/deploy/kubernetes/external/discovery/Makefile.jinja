@@ -1,7 +1,7 @@
 build:
-	kubectl apply -f configmap.yaml > /dev/null
-	kubectl apply -f service.yaml > /dev/null
-	kubectl apply -f deployment.yaml > /dev/null
+	kubectl apply -f deploy/configmap.yaml > /dev/null
+	kubectl apply -f deploy/service.yaml > /dev/null
+	kubectl apply -f deploy/deployment.yaml > /dev/null
 
 restart:
 	kubectl rollout restart --namespace={{ project_name }} deployment minos-discovery > /dev/null

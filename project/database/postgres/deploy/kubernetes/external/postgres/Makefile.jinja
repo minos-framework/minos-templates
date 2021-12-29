@@ -3,9 +3,9 @@ build:
 	$(MAKE) create-user
 
 build-pod:
-	kubectl apply -f configmap.yaml > /dev/null
-	kubectl apply -f service.yaml > /dev/null
-	kubectl apply -f deployment.yaml > /dev/null
+	kubectl apply -f deploy/configmap.yaml > /dev/null
+	kubectl apply -f deploy/service.yaml > /dev/null
+	kubectl apply -f deploy/deployment.yaml > /dev/null
 
 create-user:
 	kubectl wait --for=condition=available --namespace={{ project_name }} deployment/postgres > /dev/null
