@@ -5,3 +5,6 @@ build:
 
 restart:
 	kubectl rollout restart --namespace={{ project_name }} deployment minos-discovery > /dev/null
+
+logs:
+    kubectl logs svc/minos-discovery --namespace=={{ project_name }} --follow --tail 1000
