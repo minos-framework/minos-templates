@@ -23,4 +23,4 @@ restart:
 	kubectl rollout restart --namespace={{ project_name }} deployment/postgres > /dev/null
 
 logs:
-	kubectl logs svc/postgres --namespace=={{ project_name }} --follow --tail 1000
+	kubectl logs svc/postgres --namespace={{ project_name }} --follow --tail 1000

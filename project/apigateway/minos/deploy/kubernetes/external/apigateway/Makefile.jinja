@@ -8,4 +8,4 @@ restart:
 	kubectl rollout restart --namespace={{ project_name }} deployment minos-apigateway > /dev/null
 
 logs:
-	kubectl logs svc/minos-apigateway --namespace=={{ project_name }} --follow --tail 1000
+	kubectl logs svc/minos-apigateway --namespace={{ project_name }} --follow --tail 1000

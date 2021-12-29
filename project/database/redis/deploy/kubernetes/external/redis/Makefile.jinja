@@ -6,4 +6,4 @@ restart:
 	kubectl rollout restart --namespace={{ project_name }} deployment redis > /dev/null
 
 logs:
-	kubectl logs svc/redis --namespace=={{ project_name }} --follow --tail 1000
+	kubectl logs svc/redis --namespace={{ project_name }} --follow --tail 1000
