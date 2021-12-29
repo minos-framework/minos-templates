@@ -1,6 +1,17 @@
 {% include (destination / "Makefile").as_posix() %}
 
 build:
-	docker build --no-cache -t {{ project_name }}-{{ name }} -f deploy/Dockerfile .
+	$(MAKE) build-image
+	$(MAKE) build-config
+
+build-image:
+	docker build --pull -t {{ project_name }}-{{ name }} -f deploy/Dockerfile .
 	docker tag {{ project_name }}-{{ name }}:latest {{ kubernetes_registry }}/{{ project_name }}-{{ name }}:{{ version }}
 	docker push {{ kubernetes_registry }}/{{ project_name }}-{{ name }}:{{ version }}
+
+build-config:
+	kubectl apply -f deploy/deployment.yaml
+	kubectl apply -f deploy/service.yaml
+
+restart:
+	kubectl rollout restart --namespace={{ project_name }} deployment/{{ project_name }}-{{ name }} > /dev/null

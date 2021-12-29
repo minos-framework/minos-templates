@@ -18,3 +18,6 @@ coverage:
 	poetry run coverage run -m pytest
 	poetry run coverage report -m
 	poetry run coverage xml
+
+create-database:
+	$(MAKE) -C ../../external/postgres create-database DB_NAME={{ name }}_db

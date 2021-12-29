@@ -88,3 +88,6 @@ _envops:
   keep_trailing_newline: false
 
 _templates_suffix: .jinja
+
+_tasks:
+  - make -s create-database

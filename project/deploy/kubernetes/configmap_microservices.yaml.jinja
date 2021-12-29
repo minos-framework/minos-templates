@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: microservices-config
+  namespace: {{ project_name }}
+  labels:
+    app: microservice
+data:
+  MINOS_BROKER_QUEUE_HOST: "postgres.{{ project_name }}.svc.cluster.local"
+  MINOS_BROKER_HOST: "kafka.{{ project_name }}.svc.cluster.local"
+  MINOS_REPOSITORY_HOST: "postgres.{{ project_name }}.svc.cluster.local"
+  MINOS_SNAPSHOT_HOST: "postgres.{{ project_name }}.svc.cluster.local"
+  MINOS_DISCOVERY_HOST: "minos-discovery.{{ project_name }}.svc.cluster.local"
