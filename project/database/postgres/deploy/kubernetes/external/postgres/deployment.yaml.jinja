@@ -22,9 +22,3 @@ spec:
           envFrom:
             - configMapRef:
                 name: postgres-config
-          volumeMounts:
-            - name: postgres-storage
-              mountPath: /var/lib/postgresql
-      volumes:
-        - name: postgres-storage
-          emptyDir: {}
