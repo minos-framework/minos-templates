@@ -7,4 +7,4 @@ restart:
 	kubectl rollout restart --namespace={{ project_name }} deployment kafka > /dev/null
 
 logs:
-    kubectl logs svc/kafka --namespace=={{ project_name }} --follow --tail 1000
+	kubectl logs svc/kafka --namespace=={{ project_name }} --follow --tail 1000

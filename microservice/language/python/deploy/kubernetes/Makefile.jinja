@@ -17,4 +17,4 @@ restart:
 	kubectl rollout restart --namespace={{ project_name }} deployment/microservice-{{ name }} > /dev/null
 
 logs:
-    kubectl logs svc/microservice-{{ name }} --namespace=={{ project_name }} --follow --tail 1000
+	kubectl logs svc/microservice-{{ name }} --namespace=={{ project_name }} --follow --tail 1000
