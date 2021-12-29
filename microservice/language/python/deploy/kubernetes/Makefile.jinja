@@ -5,13 +5,13 @@ build:
 	$(MAKE) build-config
 
 build-image:
-	docker build --pull -t {{ project_name }}-{{ name }} -f deploy/Dockerfile .
-	docker tag {{ project_name }}-{{ name }}:latest {{ kubernetes_registry }}/{{ project_name }}-{{ name }}:{{ version }}
-	docker push {{ kubernetes_registry }}/{{ project_name }}-{{ name }}:{{ version }}
+	docker build --pull -t microservice-{{ name }} -f deploy/Dockerfile .
+	docker tag microservice-{{ name }}:latest {{ kubernetes_registry }}/microservice-{{ name }}:{{ version }}
+	docker push {{ kubernetes_registry }}/microservice-{{ name }}:{{ version }}
 
 build-config:
 	kubectl apply -f deploy/deployment.yaml
 	kubectl apply -f deploy/service.yaml
 
 restart:
-	kubectl rollout restart --namespace={{ project_name }} deployment/{{ project_name }}-{{ name }} > /dev/null
+	kubectl rollout restart --namespace={{ project_name }} deployment/microservice-{{ name }} > /dev/null

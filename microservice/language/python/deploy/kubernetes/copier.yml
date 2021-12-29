@@ -13,10 +13,11 @@ rest_port:
   help: What is the rest's port?
 kubernetes_config:
   type: str
-  default: microservices-config
+  default: microservice-config
   help: What is the kubernetes config?
 kubernetes_registry:
   type: str
+  default: "localhost:5000"
   help: What is the kubernetes registry?
 
 _envops:

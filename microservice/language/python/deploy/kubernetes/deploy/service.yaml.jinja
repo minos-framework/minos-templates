@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ project_name }}-{{ name }}
+  name: microservice-{{ name }}
   namespace: {{ project_name }}
 spec:
   type: ClusterIP
@@ -9,4 +9,4 @@ spec:
     - port: {{ rest_port }}
       targetPort: {{ rest_port }}
   selector:
-   app.kubernetes.io/name: {{ project_name }}-{{ name }}
+   app.kubernetes.io/name: microservice-{{ name }}
