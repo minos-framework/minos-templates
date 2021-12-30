@@ -24,12 +24,8 @@ def build_docker_compose(path: Path) -> str:
     kafka_container = {
         "restart": "always",
         "image": "wurstmeister/kafka:latest",
-        "ports": [
-            "9092"
-        ],
-        "depends_on": [
-            "zookeeper"
-        ],
+        "ports": ["9092"],
+        "depends_on": ["zookeeper"],
         "volumes": ["kafka_volume:/kafka"],
         "environment": {
             "KAFKA_DELETE_TOPIC_ENABLE": "true",

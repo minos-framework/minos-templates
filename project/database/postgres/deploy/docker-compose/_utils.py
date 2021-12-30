@@ -20,9 +20,7 @@ def build_docker_compose(path: Path) -> str:
         "restart": "always",
         "build": "external/postgres",
         "command": "postgres -c 'max_connections=200'",
-        "ports": [
-            "5432"
-        ],
+        "ports": ["5432"],
         "volumes": [
             "postgres_volume:/var/lib/postgresql",
         ],

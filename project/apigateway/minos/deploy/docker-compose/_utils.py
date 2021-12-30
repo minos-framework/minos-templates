@@ -17,12 +17,8 @@ def build_docker_compose(path: Path) -> str:
     container = {
         "restart": "always",
         "build": "external/apigateway",
-        "ports": [
-            "5566"
-        ],
-        "depends_on": [
-            "discovery"
-        ],
+        "ports": ["5566"],
+        "depends_on": ["discovery"],
         "environment": {
             "PYTHONPATH": "/api_gateway",
             "DISCOVERY_SERVICE_HOST": "discovery",
