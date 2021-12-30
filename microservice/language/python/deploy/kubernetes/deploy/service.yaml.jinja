@@ -7,6 +7,5 @@ spec:
   type: ClusterIP
   ports:
     - port: {{ rest_port }}
-      targetPort: {{ rest_port }}
   selector:
    app.kubernetes.io/name: microservice-{{ name }}
