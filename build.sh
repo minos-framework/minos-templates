@@ -81,7 +81,7 @@ tar -czf "$BUILD_DIR/project-deploy-docker-compose.tar.gz" -C "$ROOT_DIR/project
 
 echo "Building Project Discovery Minos Init Template..."
 tar -czf "$BUILD_DIR/project-discovery-minos-init.tar.gz" -C "$ROOT_DIR/project/discovery/minos/init" .
-  
+
 echo "Building Project Discovery Minos Deploy Docker Compose Template..."
 tar -czf "$BUILD_DIR/project-discovery-minos-deploy-docker-compose.tar.gz" -C "$ROOT_DIR/project/discovery/minos/deploy/docker-compose" .
 

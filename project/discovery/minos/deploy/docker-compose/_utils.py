@@ -1,6 +1,8 @@
-from __future__ import annotations
+from __future__ import (
+    annotations, )
 
-from pathlib import Path
+from pathlib import (
+    Path, )
 
 import yaml
 
@@ -17,12 +19,8 @@ def build_docker_compose(path: Path) -> str:
     container = {
         "restart": "always",
         "build": "external/discovery",
-        "ports": [
-            "5567"
-        ],
-        "depends_on": [
-            "redis"
-        ],
+        "ports": ["5567"],
+        "depends_on": ["redis"],
         "environment": {
             "DISCOVERY_SERVICE_DB_HOST": "redis",
         },
