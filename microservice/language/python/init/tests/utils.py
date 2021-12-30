@@ -8,21 +8,17 @@ from pathlib import (
 from typing import (
     Optional,
 )
-from uuid import (
-    UUID,
-    uuid4,
-)
+from uuid import UUID
+from uuid import uuid4
 
-from minos.common import (
-    CommandReply,
-    DependencyInjector,
-    InMemoryRepository,
-    InMemorySnapshot,
-    MinosBroker,
-    MinosConfig,
-    MinosSagaManager,
-    Model,
-)
+from minos.common import CommandReply
+from minos.common import DependencyInjector
+from minos.common import InMemoryRepository
+from minos.common import InMemorySnapshot
+from minos.common import MinosBroker
+from minos.common import MinosConfig
+from minos.common import MinosSagaManager
+from minos.common import Model
 from minos.networks import (
     Request,
 )
