@@ -7,10 +7,6 @@ version:
 project_name:
   type: str
   help: What is the name of the project?
-rest_port:
-  type: int
-  default: 8080
-  help: What is the rest's port?
 kubernetes_config:
   type: str
   default: microservice-config

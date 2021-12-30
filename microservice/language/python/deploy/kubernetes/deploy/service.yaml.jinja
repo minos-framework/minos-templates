@@ -6,6 +6,6 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: {{ rest_port }}
+    - port: 8080
   selector:
    app.kubernetes.io/name: microservice-{{ name }}

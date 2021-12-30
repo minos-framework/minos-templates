@@ -15,45 +15,18 @@ database:
   choices:
     - postgres
   help: What is the database? [ TODO ]
-database_host:
-  type: str
-  default: localhost
-  help: What is the database's host?
-database_port:
-  type: int
-  default: 5432
-  help: What is the database's port?
-database_user:
-  type: str
-  default: minos
-  help: What is the database's user?
-database_password:
-  type: str
-  default: min0s
-  secret: true
-  help: What is the database's password?
 broker:
   type: str
   default: kafka
   choices:
     - kafka
   help: What is the broker? [ TODO ]
-broker_host:
+rest:
   type: str
-  default: localhost
-  help: What is the broker's host?
-broker_port:
-  type: str
-  default: "9092"
-  help: What is the broker's port?
-rest_host:
-  type: str
-  default: 0.0.0.0
-  help: What is the rest's host?
-rest_port:
-  type: int
-  default: 8080
-  help: What is the rest's port?
+  default: aiohttp
+  help: What is the rest? [ TODO ]
+  choices:
+    - aiohttp
 discovery:
   type: str
   default: minos

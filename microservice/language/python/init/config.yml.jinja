@@ -27,31 +27,31 @@ services:
   - src.queries.{{ aggregate }}QueryService
   - src.commands.{{ aggregate }}CommandService
 rest:
-  host: {{ rest_host }}
-  port: {{ rest_port }}
+  host: 0.0.0.0
+  port: 8080
 broker:
-  host: {{ broker_host }}
-  port: {{ broker_port }}
+  host: localhost
+  port: 9092
   queue:
     database: {{ name }}_db
-    user: {{ database_user }}
-    password: {{ database_password }}
-    host: {{ database_host }}
-    port: {{ database_port }}
+    user: postgres
+    password: ""
+    host: localhost
+    port: 5432
     records: 1000
     retry: 2
 repository:
   database: {{ name }}_db
-  user: {{ database_user }}
-  password: {{ database_password }}
-  host: {{ database_host }}
-  port: {{ database_port }}
+  user: postgres
+  password: ""
+  host: localhost
+  port: 5432
 snapshot:
   database: {{ name }}_db
-  user: {{ database_user }}
-  password: {{ database_password }}
-  host: {{ database_host }}
-  port: {{ database_port }}
+  user: postgres
+  password: ""
+  host: localhost
+  port: 5432
 saga:
   storage:
     path: ./{{ name }}.lmdb

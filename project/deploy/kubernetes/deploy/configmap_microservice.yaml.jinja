@@ -7,8 +7,18 @@ metadata:
     app: microservice
 data:
   MINOS_BROKER_QUEUE_HOST: "postgres.{{ project_name }}.svc.cluster.local"
+  MINOS_BROKER_QUEUE_USER: "minos"
+  MINOS_BROKER_QUEUE_PASSWORD: "min0s"
+
   MINOS_BROKER_HOST: "kafka.{{ project_name }}.svc.cluster.local"
+
   MINOS_REPOSITORY_HOST: "postgres.{{ project_name }}.svc.cluster.local"
+  MINOS_REPOSITORY_USER: "minos"
+  MINOS_REPOSITORY_PASSWORD: "min0s"
+
   MINOS_SNAPSHOT_HOST: "postgres.{{ project_name }}.svc.cluster.local"
+  MINOS_SNAPSHOT_USER: "minos"
+  MINOS_SNAPSHOT_PASSWORD: "min0s"
+
   MINOS_DISCOVERY_HOST: "minos-discovery.{{ project_name }}.svc.cluster.local"
   MINOS_DISCOVERY_PORT: "5567"

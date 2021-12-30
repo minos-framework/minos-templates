@@ -18,7 +18,7 @@ spec:
           image: {{ kubernetes_registry }}/microservice-{{ name }}:{{ version }}
           imagePullPolicy: Always
           ports:
-            - containerPort: {{ rest_port }}
+            - containerPort: 8080
           envFrom:
             - configMapRef:
                 name: {{ kubernetes_config }}
