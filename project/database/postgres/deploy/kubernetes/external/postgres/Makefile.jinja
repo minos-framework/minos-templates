@@ -6,8 +6,9 @@ deploy:
 
 deploy-pod:
 	kubectl apply -f deploy/configmap.yaml > /dev/null
-	kubectl apply -f deploy/service.yaml > /dev/null
+	kubectl apply -f deploy/persistentvolumeclaim.yaml > /dev/null
 	kubectl apply -f deploy/deployment.yaml > /dev/null
+	kubectl apply -f deploy/service.yaml > /dev/null
 
 create-user:
 	kubectl wait --for=condition=available --namespace={{ project_name }} deployment/postgres > /dev/null
