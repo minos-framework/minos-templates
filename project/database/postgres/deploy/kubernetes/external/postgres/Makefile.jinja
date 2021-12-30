@@ -1,8 +1,10 @@
-build:
-	$(MAKE) build-pod
+.PHONY: deploy
+
+deploy:
+	$(MAKE) deploy-pod
 	$(MAKE) create-user
 
-build-pod:
+deploy-pod:
 	kubectl apply -f deploy/configmap.yaml > /dev/null
 	kubectl apply -f deploy/service.yaml > /dev/null
 	kubectl apply -f deploy/deployment.yaml > /dev/null

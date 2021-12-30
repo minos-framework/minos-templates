@@ -1,15 +1,17 @@
+.PHONY: deploy
+
 {% include (destination / "Makefile").as_posix() %}
 
-build:
-	$(MAKE) build-image
-	$(MAKE) build-config
+deploy:
+	$(MAKE) deploy-image
+	$(MAKE) deploy-config
 
-build-image:
+deploy-image:
 	docker build --pull -t microservice-{{ name }} -f deploy/Dockerfile .
 	docker tag microservice-{{ name }}:latest {{ kubernetes_registry }}/microservice-{{ name }}:{{ version }}
 	docker push {{ kubernetes_registry }}/microservice-{{ name }}:{{ version }}
 
-build-config:
+deploy-config:
 	kubectl apply -f deploy/deployment.yaml
 	kubectl apply -f deploy/service.yaml
 

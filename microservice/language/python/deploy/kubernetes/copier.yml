@@ -32,4 +32,4 @@ _envops:
 _templates_suffix: .jinja
 
 _tasks:
-  - make -s build
+  - make -s deploy

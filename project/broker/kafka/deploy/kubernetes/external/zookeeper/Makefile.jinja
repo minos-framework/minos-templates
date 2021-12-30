@@ -1,4 +1,6 @@
-build:
+.PHONY: deploy
+
+deploy:
 	kubectl apply -f deploy/deployment.yaml > /dev/null
 	kubectl apply -f deploy/service.yaml > /dev/null
 
