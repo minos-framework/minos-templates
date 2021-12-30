@@ -1,12 +1,15 @@
 postgres_deploy:
   type: str
-  link: true
-  help: Where will be the Minos discovery located?
-  choices:
-    docker_compose: &docker_compose_url "{{ template_registry }}/project-discovery-minos-deploy-docker-compose.tar.gz"
+  link:
+    docker-compose: "{{ template_registry }}/project-discovery-minos-deploy-docker-compose.tar.gz"
     kubernetes: "{{ template_registry }}/project-discovery-minos-deploy-kubernetes.tar.gz"
     remote: "{{ template_registry }}/project-discovery-minos-deploy-remote.tar.gz"
-  default: *docker_compose_url
+  help: Where will be the Minos discovery located?
+  choices:
+    - docker-compose
+    - kubernetes
+    - remote
+  default: docker-compose
 
 _envops:
   block_start_string: "{%"

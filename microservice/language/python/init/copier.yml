@@ -36,20 +36,24 @@ discovery:
   help: What is the discovery? [ TODO ]
 package_manager:
   type: str
-  link: true
+  link:
+    poetry: "{{ template_registry }}/microservice-python-package-manager-poetry.tar.gz"
+    pip: "{{ template_registry }}/microservice-python-package-manager-pip.tar.gz"
   help: What package manager do you want to use?
   choices:
-    poetry: &poetry_url "{{ template_registry }}/microservice-python-package-manager-poetry.tar.gz"
-    pip: "{{ template_registry }}/microservice-python-package-manager-pip.tar.gz"
-  default: *poetry_url
+    - poetry
+    - pip
+  default: poetry
 deploy:
   type: str
-  link: true
+  link:
+    docker-compose: "{{ template_registry }}/microservice-python-deploy-docker-compose.tar.gz"
+    kubernetes: "{{ template_registry }}/microservice-python-deploy-kubernetes.tar.gz"
   help: What deploy system do you want to use?
   choices:
-    docker_compose: &docker_compose_url "{{ template_registry }}/microservice-python-deploy-docker-compose.tar.gz"
-    kubernetes: "{{ template_registry }}/microservice-python-deploy-kubernetes.tar.gz"
-  default: *docker_compose_url
+    - docker-compose
+    - kubernetes
+  default: docker-compose
 
 _envops:
   block_start_string: "{%"
