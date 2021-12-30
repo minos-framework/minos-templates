@@ -74,9 +74,9 @@ deploy:
   link: true
   help: What deploy system do you want to use?
   choices:
-    docker: &docker_url "{{ template_registry }}/microservice-python-deploy-docker.tar.gz"
+    docker_compose: &docker_compose_url "{{ template_registry }}/microservice-python-deploy-docker-compose.tar.gz"
     kubernetes: "{{ template_registry }}/microservice-python-deploy-kubernetes.tar.gz"
-  default: *docker_url
+  default: *docker_compose_url
 
 _envops:
   block_start_string: "{%"
