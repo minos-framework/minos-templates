@@ -22,3 +22,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: kafka-config
+          env:
+            - name: KAFKA_ADVERTISED_HOST_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
