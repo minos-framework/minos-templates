@@ -1,0 +1,17 @@
+project_name:
+  type: str
+  help: What is the name of the project?
+
+_envops:
+  block_start_string: "{%"
+  block_end_string: "%}"
+  comment_start_string: "{#"
+  comment_end_string: "#}"
+  variable_start_string: "{{"
+  variable_end_string: "}}"
+  keep_trailing_newline: false
+
+_templates_suffix: .jinja
+
+_tasks:
+  - make -s -C external/redis deploy

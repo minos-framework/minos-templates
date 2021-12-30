@@ -9,17 +9,13 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      - name: Build Microservice Init Template
-        run: tar -czvf microservice-init.tar.gz -C ${{ github.workspace }}/microservice .
+      - name: Build Templates
+        run: sh ${{ github.workspace }}/build.sh
 
-      - name: Build Project Init Template
-        run: tar -czvf project-init.tar.gz -C ${{ github.workspace }}/project .
-
-      - name: Release
+      - name: Release Templates
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: |
-            microservice-init.tar.gz
-            project-init.tar.gz
-
+          prerelease: true
+          fail_on_unmatched_files: true
+          files: ${{ github.workspace }}/.build/*

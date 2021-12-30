@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minos-discovery
+  namespace: {{ project_name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: minos-discovery
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: minos-discovery
+    spec:
+      containers:
+        - name: discovery
+          image: ghcr.io/clariteia/minos-discovery:0.0.8
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5567
+          envFrom:
+            - configMapRef:
+                name: discovery-config

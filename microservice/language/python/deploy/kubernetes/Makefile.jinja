@@ -1,0 +1,22 @@
+.PHONY: deploy
+
+{% include (destination / "Makefile").as_posix() %}
+
+deploy:
+	$(MAKE) deploy-image
+	$(MAKE) deploy-config
+
+deploy-image:
+	docker build --pull -t microservice-{{ name }} -f deploy/Dockerfile .
+	docker tag microservice-{{ name }}:latest {{ kubernetes_registry }}/microservice-{{ name }}:{{ version }}
+	docker push {{ kubernetes_registry }}/microservice-{{ name }}:{{ version }}
+
+deploy-config:
+	kubectl apply -f deploy/deployment.yaml
+	kubectl apply -f deploy/service.yaml
+
+restart:
+	kubectl rollout restart --namespace={{ project_name }} deployment/microservice-{{ name }} > /dev/null
+
+logs:
+	kubectl logs svc/microservice-{{ name }} --namespace={{ project_name }} --follow --tail 1000

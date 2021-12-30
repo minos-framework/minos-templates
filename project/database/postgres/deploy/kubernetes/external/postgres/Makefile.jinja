@@ -1,0 +1,28 @@
+.PHONY: deploy
+
+deploy:
+	$(MAKE) deploy-pod
+	$(MAKE) create-user
+
+deploy-pod:
+	kubectl apply -f deploy/configmap.yaml > /dev/null
+	kubectl apply -f deploy/service.yaml > /dev/null
+	kubectl apply -f deploy/deployment.yaml > /dev/null
+
+create-user:
+	kubectl wait --for=condition=available --namespace={{ project_name }} deployment/postgres > /dev/null
+	sleep 1
+	kubectl exec -it --namespace={{ project_name }} svc/postgres -- \
+		psql -U postgres -tc "CREATE USER minos WITH ENCRYPTED PASSWORD 'min0s';" || true
+
+create-database:
+	kubectl wait --for=condition=available --namespace={{ project_name }} deployment/postgres > /dev/null
+	sleep 1
+	kubectl exec -it --namespace={{ project_name }} svc/postgres -- \
+		psql -U postgres -tc "CREATE DATABASE $(DB_NAME) OWNER minos;" || true
+
+restart:
+	kubectl rollout restart --namespace={{ project_name }} deployment/postgres > /dev/null
+
+logs:
+	kubectl logs svc/postgres --namespace={{ project_name }} --follow --tail 1000

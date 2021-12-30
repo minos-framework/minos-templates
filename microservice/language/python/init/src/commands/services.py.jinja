@@ -1,0 +1,31 @@
+from minos.cqrs import (
+    CommandService,
+)
+from minos.networks import (
+    Request,
+    Response,
+    ResponseException,
+    enroute,
+)
+
+from ..aggregates import (
+    {{ aggregate }},
+)
+
+
+class {{ aggregate }}CommandService(CommandService):
+    """{{ aggregate }}CommandService class."""
+
+    @enroute.rest.command("/{{ aggregate.lower() }}s", "POST")
+    @enroute.broker.command("Create{{ aggregate }}")
+    async def create_{{ aggregate.lower() }}(self, request: Request) -> Response:
+        """Create a new ``{{ aggregate }}`` instance.
+
+        :param request: The ``Request`` instance.
+        :return: A ``Response`` instance.
+        """
+        try:
+            instance = await {{ aggregate }}.create()
+            return Response({"uuid": instance.uuid })
+        except Exception as exc:
+            raise ResponseException(f"An error occurred during {{ aggregate }} creation: {exc}")

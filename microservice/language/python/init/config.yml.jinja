@@ -1,0 +1,61 @@
+service:
+  name: {{ name }}
+  aggregate: src.aggregates.{{ aggregate }}
+  injections:
+    lock_pool: minos.common.PostgreSqlLockPool
+    postgresql_pool: minos.common.PostgreSqlPool
+    broker_publisher: minos.networks.BrokerPublisher
+    broker_consumer: minos.networks.BrokerConsumer
+    broker_pool: minos.networks.DynamicBrokerPool
+    transaction_repository: minos.aggregate.PostgreSqlTransactionRepository
+    event_repository: minos.aggregate.PostgreSqlEventRepository
+    snapshot_repository: minos.aggregate.PostgreSqlSnapshotRepository
+    saga_manager: minos.saga.SagaManager
+    discovery: minos.networks.DiscoveryConnector
+  services:
+    - minos.networks.BrokerProducerService
+    - minos.networks.BrokerConsumerService
+    - minos.networks.BrokerHandlerService
+    - minos.networks.RestService
+    - minos.networks.PeriodicTaskSchedulerService
+middleware:
+  - minos.saga.transactional_command
+services:
+  - minos.aggregate.TransactionService
+  - minos.aggregate.SnapshotService
+  - minos.saga.SagaService
+  - src.queries.{{ aggregate }}QueryService
+  - src.commands.{{ aggregate }}CommandService
+rest:
+  host: 0.0.0.0
+  port: 8080
+broker:
+  host: localhost
+  port: 9092
+  queue:
+    database: {{ name }}_db
+    user: postgres
+    password: ""
+    host: localhost
+    port: 5432
+    records: 1000
+    retry: 2
+repository:
+  database: {{ name }}_db
+  user: postgres
+  password: ""
+  host: localhost
+  port: 5432
+snapshot:
+  database: {{ name }}_db
+  user: postgres
+  password: ""
+  host: localhost
+  port: 5432
+saga:
+  storage:
+    path: ./{{ name }}.lmdb
+discovery:
+  client: minos.networks.MinosDiscoveryClient
+  host: localhost
+  port: 5567

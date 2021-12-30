@@ -1,0 +1,6 @@
+# Intellij IDEa / PyCharm / etc.
+.idea
+.run
+
+# Build
+.build

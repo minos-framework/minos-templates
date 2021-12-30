@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: discovery-config
+  namespace: {{ project_name }}
+  labels:
+    app: minos-discovery
+data:
+  DISCOVERY_SERVICE_PORT: "5567"
+  DISCOVERY_SERVICE_DB_HOST: "redis.{{ project_name }}.svc.cluster.local"
+  DISCOVERY_SERVICE_DB_PORT: "6379"

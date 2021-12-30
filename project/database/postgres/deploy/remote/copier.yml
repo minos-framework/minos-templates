@@ -1,0 +1,28 @@
+database_host:
+  type: str
+  default: localhost
+  help: What is the database's host?
+database_port:
+  type: int
+  default: 5432
+  help: What is the database's port?
+database_user:
+  type: str
+  default: minos
+  help: What is the database's user?
+database_password:
+  type: strz
+  default: min0s
+  secret: true
+  help: What is the database's password?
+
+_envops:
+  block_start_string: "{%"
+  block_end_string: "%}"
+  comment_start_string: "{#"
+  comment_end_string: "#}"
+  variable_start_string: "{{"
+  variable_end_string: "}}"
+  keep_trailing_newline: false
+
+_templates_suffix: .jinja

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apigateway-config
+  namespace: {{ project_name }}
+  labels:
+    app: minos-apigateway
+data:
+  API_GATEWAY_REST_PORT: "5566"
+  API_GATEWAY_DISCOVERY_PORT: "5567"
+  API_GATEWAY_DISCOVERY_HOST: "minos-discovery.{{ project_name }}.svc.cluster.local"
+  API_GATEWAY_REST_AUTH_ENABLED: "false"
