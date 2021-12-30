@@ -1,15 +1,13 @@
 postgres_deploy:
   type: str
   link:
-    docker-compose: "{{ template_registry }}/project-apigateway-minos-deploy-docker-compose.tar.gz"
-    kubernetes: "{{ template_registry }}/project-apigateway-minos-deploy-kubernetes.tar.gz"
+    self-hosted: "{{ template_registry }}/project-apigateway-minos-deploy-{{ project_deploy }}.tar.gz"
     remote: "{{ template_registry }}/project-apigateway-minos-deploy-remote.tar.gz"
   help: Where will be the Minos API Gateway located?
   choices:
-    - docker-compose
-    - kubernetes
+    - self-hosted
     - remote
-  default: docker-compose
+  default: self-hosted
 
 _envops:
   block_start_string: "{%"

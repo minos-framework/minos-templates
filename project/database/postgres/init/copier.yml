@@ -1,15 +1,13 @@
 postgres_deploy:
   type: str
   link:
-    docker-compose: "{{ template_registry }}/project-database-postgres-deploy-docker-compose.tar.gz"
-    kubernetes: "{{ template_registry }}/project-database-postgres-deploy-kubernetes.tar.gz"
+    self-hosted: "{{ template_registry }}/project-database-postgres-deploy-{{ project_deploy }}.tar.gz"
     remote: "{{ template_registry }}/project-database-postgres-deploy-remote.tar.gz"
   help: Where will be the Postgres database located?
   choices:
-    - docker-compose
-    - kubernetes
+    - self-hosted
     - remote
-  default: docker-compose
+  default: self-hosted
 
 _envops:
   block_start_string: "{%"
