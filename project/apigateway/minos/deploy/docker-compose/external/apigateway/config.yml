@@ -4,10 +4,10 @@ rest:
   cors:
     enabled: true
   auth:
-      host: localhost
-      port: 8092
-      method: POST
-      path: /validate-token
+    host: localhost
+    port: 8092
+    method: POST
+    path: /validate-token
 discovery:
   host: localhost
   port: 5567

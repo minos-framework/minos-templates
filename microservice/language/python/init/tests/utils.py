@@ -1,36 +1,27 @@
 from __future__ import (
-    annotations,
-)
+    annotations, )
 
 from pathlib import (
-    Path,
-)
+    Path, )
 from typing import (
-    Optional,
-)
-from uuid import (
-    UUID,
-    uuid4,
-)
+    Optional, )
+from uuid import UUID
+from uuid import uuid4
 
-from minos.common import (
-    CommandReply,
-    DependencyInjector,
-    InMemoryRepository,
-    InMemorySnapshot,
-    MinosBroker,
-    MinosConfig,
-    MinosSagaManager,
-    Model,
-)
+from minos.common import CommandReply
+from minos.common import DependencyInjector
+from minos.common import InMemoryRepository
+from minos.common import InMemorySnapshot
+from minos.common import MinosBroker
+from minos.common import MinosConfig
+from minos.common import MinosSagaManager
+from minos.common import Model
 from minos.networks import (
-    Request,
-)
+    Request, )
 
 
 class _FakeRequest(Request):
     """For testing purposes"""
-
     def __init__(self, content):
         super().__init__()
         self._content = content
@@ -54,14 +45,12 @@ class _FakeRequest(Request):
 
 class _FakeBroker(MinosBroker):
     """For testing purposes."""
-
     async def send(self, items: list[Model], **kwargs) -> None:
         """For testing purposes."""
 
 
 class _FakeSagaManager(MinosSagaManager):
     """For testing purposes."""
-
     async def _run_new(self, name: str, **kwargs) -> UUID:
         """For testing purposes."""
 
