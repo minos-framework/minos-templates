@@ -28,12 +28,12 @@ def build_docker_compose(path: Path) -> str:
         "image": "wurstmeister/kafka:latest",
         "ports": ["9092"],
         "depends_on": ["zookeeper"],
-        "volumes": ["kafka_volume:/kafka"],
+        "volumes": ["kafka_volume:/kafka/kafka-logs"],
         "environment": {
+            "KAFKA_LOG_DIRS": "/kafka/kafka-logs",
             "KAFKA_DELETE_TOPIC_ENABLE": "true",
-            "KAFKA_ADVERTISED_HOST_NAME": "kafka",
-            "KAFKA_ADVERTISED_PORT": 9092,
             "KAFKA_ZOOKEEPER_CONNECT": "zookeeper:2181",
+            "KAFKA_ADVERTISED_HOST_NAME": "kafka",
         },
     }
 

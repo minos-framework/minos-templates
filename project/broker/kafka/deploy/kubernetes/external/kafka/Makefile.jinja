@@ -2,6 +2,7 @@
 
 deploy:
 	kubectl apply -f deploy/configmap.yaml > /dev/null
+	kubectl apply -f deploy/persistentvolumeclaim.yaml > /dev/null
 	kubectl apply -f deploy/deployment.yaml > /dev/null
 	kubectl apply -f deploy/service.yaml > /dev/null
 
