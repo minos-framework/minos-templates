@@ -1,8 +1,10 @@
 from __future__ import (
-    annotations, )
+    annotations,
+)
 
 from pathlib import (
-    Path, )
+    Path,
+)
 
 import yaml
 
