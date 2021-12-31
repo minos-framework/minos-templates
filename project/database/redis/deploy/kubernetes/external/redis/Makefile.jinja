@@ -1,8 +1,9 @@
 .PHONY: deploy
 
 deploy:
-	kubectl apply -f deploy/service.yaml > /dev/null
+	kubectl apply -f deploy/persistentvolumeclaim.yaml > /dev/null
 	kubectl apply -f deploy/deployment.yaml > /dev/null
+	kubectl apply -f deploy/service.yaml > /dev/null
 
 restart:
 	kubectl rollout restart --namespace={{ project_name }} deployment redis > /dev/null

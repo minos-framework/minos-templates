@@ -19,6 +19,9 @@ def build_docker_compose(path: Path) -> str:
     container = {
         "restart": "always",
         "image": "redis:latest",
+        "volumes": [
+            "redis_volume:/data",
+        ],
     }
 
     data["services"]["redis"] = container
