@@ -20,7 +20,8 @@ def build_docker_compose(path: Path) -> str:
 
     zookeeper_container = {
         "restart": "always",
-        "image": "wurstmeister/zookeeper:latest",
+        "image": "digitalwonderland/zookeeper:latest",
+        "volumes": ["zookeeper_volume:/var/lib/zookeeper"],
     }
 
     kafka_container = {

@@ -15,7 +15,14 @@ spec:
     spec:
       containers:
         - name: zookeeper
-          image: wurstmeister/zookeeper:latest
+          image: digitalwonderland/zookeeper:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 2181
+          volumeMounts:
+            - name: zookeeper
+              mountPath: /var/lib/zookeeper
+      volumes:
+        - name: zookeeper
+          persistentVolumeClaim:
+            claimName: zookeeper
