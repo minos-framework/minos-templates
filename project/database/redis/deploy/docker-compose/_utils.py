@@ -20,7 +20,7 @@ def build_docker_compose(path: Path) -> str:
         "restart": "always",
         "image": "redis:latest",
         "volumes": [
-            "redis_volume:/data",
+            "redis:/data",
         ],
     }
 

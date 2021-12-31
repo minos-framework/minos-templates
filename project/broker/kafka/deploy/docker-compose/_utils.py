@@ -16,12 +16,13 @@ def build_docker_compose(path: Path) -> str:
     with path.open() as file:
         data = yaml.load(file, Loader=yaml.FullLoader)
 
-    data["volumes"]["kafka_volume"] = {}
+    data["volumes"]["zookeeper"] = {}
+    data["volumes"]["kafka"] = {}
 
     zookeeper_container = {
         "restart": "always",
         "image": "digitalwonderland/zookeeper:latest",
-        "volumes": ["zookeeper_volume:/var/lib/zookeeper"],
+        "volumes": ["zookeeper:/var/lib/zookeeper"],
     }
 
     kafka_container = {
@@ -29,7 +30,7 @@ def build_docker_compose(path: Path) -> str:
         "image": "wurstmeister/kafka:latest",
         "ports": ["9092"],
         "depends_on": ["zookeeper"],
-        "volumes": ["kafka_volume:/kafka/kafka-logs"],
+        "volumes": ["kafka:/kafka/kafka-logs"],
         "environment": {
             "KAFKA_LOG_DIRS": "/kafka/kafka-logs",
             "KAFKA_DELETE_TOPIC_ENABLE": "true",
