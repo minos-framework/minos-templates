@@ -1,8 +1,6 @@
-from __future__ import (
-    annotations, )
+from __future__ import annotations
 
-from pathlib import (
-    Path, )
+from pathlib import Path
 
 import yaml
 
@@ -16,7 +14,7 @@ def build_docker_compose(path: Path) -> str:
     with path.open() as file:
         data = yaml.load(file, Loader=yaml.FullLoader)
 
-    data["volumes"]["postgres_volume"] = {}
+    data["volumes"]["postgres"] = {}
 
     container = {
         "restart": "always",
@@ -24,7 +22,7 @@ def build_docker_compose(path: Path) -> str:
         "command": "postgres -c 'max_connections=200'",
         "ports": ["5432"],
         "volumes": [
-            "postgres_volume:/var/lib/postgresql",
+            "postgres:/var/lib/postgresql/data",
         ],
         "environment": {
             "POSTGRES_USER": "minos",

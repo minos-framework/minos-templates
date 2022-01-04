@@ -1,8 +1,6 @@
-from __future__ import (
-    annotations, )
+from __future__ import annotations
 
-from pathlib import (
-    Path, )
+from pathlib import Path
 
 import yaml
 
@@ -19,6 +17,9 @@ def build_docker_compose(path: Path) -> str:
     container = {
         "restart": "always",
         "image": "redis:latest",
+        "volumes": [
+            "redis:/data",
+        ],
     }
 
     data["services"]["redis"] = container

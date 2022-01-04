@@ -17,8 +17,15 @@ spec:
         - name: postgres
           image: postgres:latest
           imagePullPolicy: Always
-          ports:
-            - containerPort: 5432
           envFrom:
             - configMapRef:
                 name: postgres-config
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: postgres
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres
+          persistentVolumeClaim:
+            claimName: postgres
