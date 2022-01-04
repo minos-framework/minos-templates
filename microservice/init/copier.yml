@@ -3,11 +3,12 @@ name:
   help: What is the name of the microservice?
 language:
   type: str
-  link: true
+  link:
+    python: "{{ template_registry }}/microservice-python-init.tar.gz"
   help: What programming language do you want to use?
   choices:
-    python: &python_url "{{ template_registry }}/microservice-python-init.tar.gz"
-  default: *python_url
+    - python
+  default: python
 
 _envops:
   block_start_string: "{%"
