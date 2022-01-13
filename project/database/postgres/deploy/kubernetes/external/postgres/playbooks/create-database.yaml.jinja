@@ -11,7 +11,7 @@
     - debug: var=results.stderr_lines
 
     - name: Create Database
-      shell: kubectl exec -it --namespace={{ project_name }} svc/postgres -- psql -U postgres -tc "CREATE DATABASE $(DB_NAME) OWNER minos;" || true
+      shell: kubectl exec -it --namespace={{ project_name }} svc/postgres -- psql -U postgres -tc "CREATE DATABASE {% raw %}{{ db_name }}{% endraw %} OWNER minos;" || true
       register: results
 
     - debug: var=results.stdout_lines
