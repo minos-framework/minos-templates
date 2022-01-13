@@ -3,7 +3,9 @@
   connection: local
   tasks:
     - name: Create Kubernetes Namespace
-      shell: kubectl apply -f ../deploy/namespace.yaml
+      shell: kubectl apply -f deploy/namespace.yaml
+      args:
+        chdir: ../
       register: results
 
     - debug: var=results.stdout_lines
@@ -11,7 +13,9 @@
     - debug: var=results.stderr_lines
 
     - name: Create Kubernetes Configmap for microservices
-      shell: kubectl apply -f ../deploy/configmap_microservice.yaml
+      shell: kubectl apply -f deploy/configmap_microservice.yaml
+      args:
+        chdir: ../
       register: results
 
     - debug: var=results.stdout_lines

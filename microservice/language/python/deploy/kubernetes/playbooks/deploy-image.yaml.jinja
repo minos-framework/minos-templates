@@ -3,7 +3,9 @@
   connection: local
   tasks:
     - name: Build {{ name }} Microservice Image
-      shell: docker build --pull -t microservice-{{ name }} -f ../deploy/Dockerfile ../
+      shell: docker build --pull -t microservice-{{ name }} -f deploy/Dockerfile .
+      args:
+        chdir: ../
       register: results
 
     - debug: var=results.stdout_lines

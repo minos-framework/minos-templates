@@ -5,7 +5,7 @@
     - name: Check Syntax
       shell: poetry run flake8
       args:
-          chdir: ../
+        chdir: ../
       register: results
 
     - debug: var=results.stdout_lines

@@ -5,7 +5,7 @@
     - name: Update Package Dependencies
       shell: poetry run pytest
       args:
-          chdir: ../
+        chdir: ../
       register: results
 
     - debug: var=results.stdout_lines

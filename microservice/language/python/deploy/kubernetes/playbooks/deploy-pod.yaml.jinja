@@ -3,7 +3,9 @@
   connection: local
   tasks:
     - name: Create {{ name }} Microservice Deployment
-      shell: kubectl apply -f ../deploy/deployment.yaml
+      shell: kubectl apply -f deploy/deployment.yaml
+      args:
+        chdir: ../
       register: results
 
     - debug: var=results.stdout_lines
@@ -11,7 +13,9 @@
     - debug: var=results.stderr_lines
 
     - name: Create {{ name }} Microservice Service
-      shell: kubectl apply -f ../deploy/service.yaml
+      shell: kubectl apply -f deploy/service.yaml
+      args:
+        chdir: ../
       register: results
 
     - debug: var=results.stdout_lines

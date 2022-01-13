@@ -5,7 +5,7 @@
     - name: Run Tests with Coverage
       shell: poetry run coverage run -m pytest
       args:
-          chdir: ../
+        chdir: ../
       register: results
 
     - debug: var=results.stdout_lines
@@ -15,7 +15,7 @@
     - name: Generate Coverage Report
       shell: poetry run coverage report -m
       args:
-          chdir: ../
+        chdir: ../
       register: results
 
     - debug: var=results.stdout_lines
@@ -25,7 +25,7 @@
     - name: Generate Coverage XML
       shell: poetry run coverage xml
       args:
-          chdir: ../
+        chdir: ../
       register: results
 
     - debug: var=results.stdout_lines
