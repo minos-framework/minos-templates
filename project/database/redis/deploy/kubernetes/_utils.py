@@ -15,11 +15,9 @@ def build_deploy_playbook(path: Path) -> str:
     if data is None:
         data = list()
 
-    data.append(
-        {
-            "name": "Deploy Redis Database",
-            "import_playbook": "../external/redis/playbooks/deploy.yaml",
-        }
-    )
+    data.append({
+        "name": "Deploy Redis Database",
+        "import_playbook": "../external/redis/playbooks/deploy.yaml",
+    })
 
     return yaml.dump(data, sort_keys=False)
