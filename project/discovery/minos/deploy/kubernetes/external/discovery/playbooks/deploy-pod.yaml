@@ -4,11 +4,9 @@
   tasks:
     - name: Create Minos Discovery Configmap
       shell: kubectl apply -f ../deploy/configmap.yaml
-      
+
     - name: Create Minos Discovery Deployment
       shell: kubectl apply -f ../deploy/deployment.yaml
 
     - name: Create Minos Discovery Service
       shell: kubectl apply -f ../deploy/service.yaml
-
-

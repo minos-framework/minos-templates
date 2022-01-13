@@ -10,5 +10,3 @@
 
     - name: Create Zookeeper Service
       shell: kubectl apply -f ../deploy/service.yaml
-
-

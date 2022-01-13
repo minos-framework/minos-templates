@@ -10,5 +10,3 @@
 
     - name: Create Redis Service
       shell: kubectl apply -f ../deploy/service.yaml
-
-

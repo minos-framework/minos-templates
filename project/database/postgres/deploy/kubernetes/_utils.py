@@ -1,10 +1,6 @@
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
-from pathlib import (
-    Path,
-)
+from pathlib import Path
 
 import yaml
 
@@ -20,8 +16,10 @@ def build_deploy_playbook(path: Path) -> str:
         data = list()
 
     data.append({
-        "name": "Deploy Postgres Database",
-        "import_playbook": "../external/postgres/playbooks/deploy.yaml"
+        "name":
+        "Deploy Postgres Database",
+        "import_playbook":
+        "../external/postgres/playbooks/deploy.yaml",
     })
 
     return yaml.dump(data, sort_keys=False)

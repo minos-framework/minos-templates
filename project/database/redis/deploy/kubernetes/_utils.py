@@ -1,10 +1,6 @@
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
-from pathlib import (
-    Path,
-)
+from pathlib import Path
 
 import yaml
 
@@ -21,7 +17,7 @@ def build_deploy_playbook(path: Path) -> str:
 
     data.append({
         "name": "Deploy Redis Database",
-        "import_playbook": "../external/redis/playbooks/deploy.yaml"
+        "import_playbook": "../external/redis/playbooks/deploy.yaml",
     })
 
     return yaml.dump(data, sort_keys=False)
