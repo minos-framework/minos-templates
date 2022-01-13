@@ -13,5 +13,3 @@
 
     - name: Create Minos ApiGateway Ingress
       shell: kubectl apply -f ../deploy/ingress.yaml
-
-
