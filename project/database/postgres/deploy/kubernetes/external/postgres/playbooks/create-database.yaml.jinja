@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Wait
+      shell: kubectl wait --for=condition=available --namespace={{ project_name }} deployment/postgres && sleep 1
+
+    - name: Create Database
+      shell: kubectl exec -it --namespace={{ project_name }} svc/postgres -- psql -U postgres -tc "CREATE DATABASE $(DB_NAME) OWNER minos;" || true
+

@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Kafka Configmap
+      shell: kubectl apply -f ../deploy/configmap.yaml
+
+    - name: Create Kafka Persistent Volume Claim
+      shell: kubectl apply -f ../deploy/persistentvolumeclaim.yaml
+
+    - name: Create Kafka Deployment
+      shell: kubectl apply -f ../deploy/deployment.yaml
+
+    - name: Create Kafka Service
+      shell: kubectl apply -f ../deploy/service.yaml
+
+

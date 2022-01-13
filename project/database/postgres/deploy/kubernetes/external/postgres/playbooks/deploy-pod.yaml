@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Postgres Configmap
+      shell: kubectl apply -f ../deploy/configmap.yaml
+
+    - name: Create Postgres Persistent Volume Claim
+      shell: kubectl apply -f ../deploy/persistentvolumeclaim.yaml
+
+    - name: Create Postgres Deployment
+      shell: kubectl apply -f ../deploy/deployment.yaml
+
+    - name: Create Postgres Service
+      shell: kubectl apply -f ../deploy/service.yaml
+
+

@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Minos ApiGateway Configmap
+      shell: kubectl apply -f ../deploy/configmap.yaml
+
+    - name: Create Minos ApiGateway Deployment
+      shell: kubectl apply -f ../deploy/deployment.yaml
+
+    - name: Create Minos ApiGateway Service
+      shell: kubectl apply -f ../deploy/service.yaml
+
+    - name: Create Minos ApiGateway Ingress
+      shell: kubectl apply -f ../deploy/ingress.yaml
+
+

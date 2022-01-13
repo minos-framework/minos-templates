@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Zookeeper Persistent Volume Claim
+      shell: kubectl apply -f ../deploy/persistentvolumeclaim.yaml
+
+    - name: Create Zookeeper Deployment
+      shell: kubectl apply -f ../deploy/deployment.yaml
+
+    - name: Create Zookeeper Service
+      shell: kubectl apply -f ../deploy/service.yaml
+
+

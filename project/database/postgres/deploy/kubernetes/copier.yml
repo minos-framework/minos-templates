@@ -13,5 +13,9 @@ _envops:
 
 _templates_suffix: .jinja
 
-_tasks:
-  - make -s -C external/postgres deploy
+_exclude:
+  - "copier.yml"
+  - "_utils.py"
+
+_functions:
+  - "_utils.build_deploy_playbook"

@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Redis Persistent Volume Claim
+      shell: kubectl apply -f ../deploy/persistentvolumeclaim.yaml
+
+    - name: Create Redis Deployment
+      shell: kubectl apply -f ../deploy/deployment.yaml
+
+    - name: Create Redis Service
+      shell: kubectl apply -f ../deploy/service.yaml
+
+

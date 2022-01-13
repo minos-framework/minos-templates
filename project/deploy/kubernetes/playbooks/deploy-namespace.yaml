@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Kubernetes Namespace
+      shell: kubectl apply -f ../deploy/namespace.yaml
+
+    - name: Create Kubernetes Configmap for microservices
+      shell: kubectl apply -f ../deploy/configmap_microservice.yaml
+
+
