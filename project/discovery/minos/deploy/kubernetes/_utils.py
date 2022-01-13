@@ -15,7 +15,11 @@ def build_deploy_playbook(path: Path) -> str:
     if data is None:
         data = list()
 
-    data.append({"name": "Deploy Minos Discovery",
-                "import_playbook": "../external/discovery/playbooks/deploy.yaml"})
+    data.append(
+        {
+            "name": "Deploy Minos Discovery",
+            "import_playbook": "../external/discovery/playbooks/deploy.yaml",
+        }
+    )
 
     return yaml.dump(data, sort_keys=False)

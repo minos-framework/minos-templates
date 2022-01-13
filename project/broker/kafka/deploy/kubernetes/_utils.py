@@ -17,10 +17,14 @@ def build_deploy_playbook(path: Path) -> str:
 
     data.extend(
         [
-            {"name": "Deploy Zookeeper",
-                "import_playbook": "../external/zookeeper/playbooks/deploy.yaml"},
-            {"name": "Deploy Kafka",
-                "import_playbook": "../external/kafka/playbooks/deploy.yaml"},
+            {
+                "name": "Deploy Zookeeper",
+                "import_playbook": "../external/zookeeper/playbooks/deploy.yaml",
+            },
+            {
+                "name": "Deploy Kafka",
+                "import_playbook": "../external/kafka/playbooks/deploy.yaml",
+            },
         ]
     )
 
