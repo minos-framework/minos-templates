@@ -4,12 +4,32 @@
   tasks:
     - name: Create Kafka Configmap
       shell: kubectl apply -f ../deploy/configmap.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
 
     - name: Create Kafka Persistent Volume Claim
       shell: kubectl apply -f ../deploy/persistentvolumeclaim.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
 
     - name: Create Kafka Deployment
       shell: kubectl apply -f ../deploy/deployment.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
 
     - name: Create Kafka Service
       shell: kubectl apply -f ../deploy/service.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines

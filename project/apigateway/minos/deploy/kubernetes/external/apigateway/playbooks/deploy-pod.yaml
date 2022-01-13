@@ -4,12 +4,32 @@
   tasks:
     - name: Create Minos ApiGateway Configmap
       shell: kubectl apply -f ../deploy/configmap.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
 
     - name: Create Minos ApiGateway Deployment
       shell: kubectl apply -f ../deploy/deployment.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
 
     - name: Create Minos ApiGateway Service
       shell: kubectl apply -f ../deploy/service.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
 
     - name: Create Minos ApiGateway Ingress
       shell: kubectl apply -f ../deploy/ingress.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines

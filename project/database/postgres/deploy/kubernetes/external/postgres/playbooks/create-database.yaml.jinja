@@ -4,6 +4,16 @@
   tasks:
     - name: Wait
       shell: kubectl wait --for=condition=available --namespace={{ project_name }} deployment/postgres && sleep 1
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
 
     - name: Create Database
       shell: kubectl exec -it --namespace={{ project_name }} svc/postgres -- psql -U postgres -tc "CREATE DATABASE $(DB_NAME) OWNER minos;" || true
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines

@@ -4,3 +4,8 @@
   tasks:
     - name: Restart Minos ApiGateway
       shell: kubectl rollout restart --namespace={{ project_name }} deployment/minos-apigateway
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines

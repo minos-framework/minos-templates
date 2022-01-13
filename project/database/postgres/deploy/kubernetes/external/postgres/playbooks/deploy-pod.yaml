@@ -4,12 +4,32 @@
   tasks:
     - name: Create Postgres Configmap
       shell: kubectl apply -f ../deploy/configmap.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
 
     - name: Create Postgres Persistent Volume Claim
       shell: kubectl apply -f ../deploy/persistentvolumeclaim.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
 
     - name: Create Postgres Deployment
       shell: kubectl apply -f ../deploy/deployment.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
 
     - name: Create Postgres Service
       shell: kubectl apply -f ../deploy/service.yaml
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
