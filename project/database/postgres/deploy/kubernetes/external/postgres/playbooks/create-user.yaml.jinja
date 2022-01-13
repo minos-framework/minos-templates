@@ -7,4 +7,3 @@
 
     - name: Create User
       shell: kubectl exec -it --namespace={{ project_name }} svc/postgres -- psql -U postgres -tc "CREATE USER minos WITH ENCRYPTED PASSWORD 'min0s';" || true
-
