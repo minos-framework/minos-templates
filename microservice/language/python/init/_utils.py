@@ -15,6 +15,9 @@ def build_deploy_playbook(path: Path) -> str:
     if data is None:
         data = list()
 
-    data.append({"name": "Create Database", "import_playbook": "create-database.yaml"})
+    data.append({
+        "name": "Create Database",
+        "import_playbook": "create-database.yaml"
+    })
 
     return yaml.dump(data, sort_keys=False)
