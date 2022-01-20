@@ -1,0 +1,6 @@
+---
+- name: Deploy Pod
+  import_playbook: deploy-pod.yaml
+
+- name: Create Database User
+  import_playbook: create-user.yaml

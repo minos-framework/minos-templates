@@ -1,0 +1,33 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Minos Discovery Configmap
+      shell: kubectl apply -f deploy/configmap.yaml
+      args:
+        chdir: ../
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
+
+    - name: Create Minos Discovery Deployment
+      shell: kubectl apply -f deploy/deployment.yaml
+      args:
+        chdir: ../
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
+
+    - name: Create Minos Discovery Service
+      shell: kubectl apply -f deploy/service.yaml
+      args:
+        chdir: ../
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
