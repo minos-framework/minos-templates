@@ -1,4 +1,14 @@
-postgres_deploy:
+project_deploy:
+  type: str
+  link:
+    docker-compose: "{{ template_registry }}/project-deploy-docker-compose.tar.gz"
+    kubernetes: "{{ template_registry }}/project-deploy-kubernetes.tar.gz"
+  help: What deploy system do you want to use?
+  choices:
+    - docker-compose
+    - kubernetes
+  default: docker-compose
+broker_deploy:
   type: str
   link:
     self-hosted: "{{ template_registry }}/project-broker-kafka-deploy-{{ project_deploy }}.tar.gz"
