@@ -10,7 +10,7 @@ def build_deploy_playbook(path: Path) -> str:
     data = None
     if path.exists():
         with path.open() as file:
-            data = yaml.load(file, Loader=yaml.FullLoader)
+            data = yaml.safe_load(file)
 
     if data is None:
         data = list()
