@@ -8,32 +8,7 @@ version:
 aggregate:
   type: str
   default: "{{ name.replace('_',' ').title().replace(' ', '') }}"
-  help: What is the name of the microservices's Aggregate?
-database:
-  type: str
-  default: postgres
-  choices:
-    - postgres
-  help: What is the database? [ TODO ]
-broker:
-  type: str
-  default: kafka
-  choices:
-    - kafka
-  help: What is the broker? [ TODO ]
-rest:
-  type: str
-  default: aiohttp
-  help: What is the rest? [ TODO ]
-  choices:
-    - aiohttp
-discovery:
-  type: str
-  default: minos
-  choices:
-    - minos
-    - kong
-  help: What is the discovery? [ TODO ]
+  help: What is the name of the microservices's RootEntity?
 package_manager:
   type: str
   link:
