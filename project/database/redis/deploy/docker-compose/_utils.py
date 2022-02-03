@@ -21,5 +21,6 @@ def build_docker_compose(path: Path) -> str:
     }
 
     data["services"]["redis"] = container
+    data["volumes"]["redis"] = dict()
 
     return yaml.dump(data, sort_keys=False)
