@@ -1,7 +1,22 @@
+from uuid import (
+    UUID,
+)
+
 from minos.aggregate import (
     Aggregate,
+    RootEntity,
 )
 
 
-class {{ aggregate }}(Aggregate):
-    """{{ aggregate }} Aggregate class."""
+class {{ aggregate }}(RootEntity):
+    """{{ aggregate }} RootEntity class."""
+
+
+class {{ aggregate }}Aggregate(Aggregate[{{ aggregate }}]):
+    """{{ aggregate }}Aggregate class."""
+
+    @staticmethod
+    async def create() -> UUID:
+        """Create a new instance."""
+        root = await {{ aggregate }}.create()
+        return root.uuid
