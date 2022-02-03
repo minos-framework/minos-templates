@@ -18,6 +18,14 @@ discovery_deploy:
     - self-hosted
     - remote
   default: self-hosted
+discovery_database:
+  type: str
+  link:
+    redis: "{{ template_registry }}/project-database-redis-init.tar.gz"
+  help: What database system will you use for discovery?
+  choices:
+    - redis
+  default: redis
 
 _envops:
   block_start_string: "{%"
