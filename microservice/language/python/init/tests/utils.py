@@ -1,11 +1,15 @@
-from __future__ import annotations
+from __future__ import (
+    annotations,
+)
 
-from pathlib import Path
+from pathlib import (
+    Path,
+)
 
 from minos.aggregate import (
-    InMemoryTransactionRepository,
     InMemoryEventRepository,
     InMemorySnapshotRepository,
+    InMemoryTransactionRepository,
 )
 from minos.common import (
     DependencyInjector,
