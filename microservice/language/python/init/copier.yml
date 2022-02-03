@@ -38,11 +38,9 @@ package_manager:
   type: str
   link:
     poetry: "{{ template_registry }}/microservice-python-package-manager-poetry.tar.gz"
-    pip: "{{ template_registry }}/microservice-python-package-manager-pip.tar.gz"
   help: What package manager do you want to use?
   choices:
     - poetry
-    - pip
   default: poetry
 deploy:
   type: str
