@@ -14,12 +14,10 @@ def build_docker_compose(path: Path) -> str:
     with path.open() as file:
         data = yaml.safe_load(file)
 
-    data["volumes"]["redis"] = {}
-
     container = {
         "restart": "always",
         "image": "redis:latest",
-        "volumes": ["redis:/data"],
+        "volumes": ["redis:/data",],
     }
 
     data["services"]["redis"] = container
