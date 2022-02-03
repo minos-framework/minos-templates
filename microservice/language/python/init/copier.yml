@@ -51,7 +51,7 @@ deploy:
   choices:
     - docker-compose
     - kubernetes
-  default: docker-compose
+  default: kubernetes
 
 _envops:
   block_start_string: "{%"

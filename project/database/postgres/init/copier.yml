@@ -7,7 +7,7 @@ project_deploy:
   choices:
     - docker-compose
     - kubernetes
-  default: docker-compose
+  default: kubernetes
 postgres_deploy:
   type: str
   link:

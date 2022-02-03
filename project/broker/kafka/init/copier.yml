@@ -7,7 +7,7 @@ project_deploy:
   choices:
     - docker-compose
     - kubernetes
-  default: docker-compose
+  default: kubernetes
 broker_deploy:
   type: str
   link:
