@@ -15,15 +15,11 @@ def build_deploy_playbook(path: Path) -> str:
     if data is None:
         data = list()
 
-    data.extend([
-        {
-            "name": "Deploy Zookeeper",
-            "import_playbook": "../external/zookeeper/playbooks/deploy.yaml",
-        },
-        {
-            "name": "Deploy Kafka",
-            "import_playbook": "../external/kafka/playbooks/deploy.yaml",
-        },
-    ])
+    data.extend(
+        [
+            {"name": "Deploy Zookeeper", "import_playbook": "../external/zookeeper/playbooks/deploy.yaml",},
+            {"name": "Deploy Kafka", "import_playbook": "../external/kafka/playbooks/deploy.yaml",},
+        ]
+    )
 
     return yaml.dump(data, sort_keys=False)
