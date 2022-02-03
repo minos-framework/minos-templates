@@ -7,9 +7,9 @@ from pathlib import (
 )
 
 from minos.aggregate import (
-    InMemoryTransactionRepository,
     InMemoryEventRepository,
     InMemorySnapshotRepository,
+    InMemoryTransactionRepository,
 )
 from minos.common import (
     DependencyInjector,
