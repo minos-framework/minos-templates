@@ -1,12 +1,31 @@
-postgres_deploy:
+project_deploy:
   type: str
-  link: true
+  link:
+    docker-compose: "{{ template_registry }}/project-deploy-docker-compose.tar.gz"
+    kubernetes: "{{ template_registry }}/project-deploy-kubernetes.tar.gz"
+  help: What deploy system do you want to use?
+  choices:
+    - docker-compose
+    - kubernetes
+  default: kubernetes
+discovery_deploy:
+  type: str
+  link:
+    self-hosted: "{{ template_registry }}/project-discovery-minos-deploy-{{ project_deploy }}.tar.gz"
+    remote: "{{ template_registry }}/project-discovery-minos-deploy-remote.tar.gz"
   help: Where will be the Minos discovery located?
   choices:
-    docker_compose: &docker_compose_url "{{ template_registry }}/project-discovery-minos-deploy-docker-compose.tar.gz"
-    kubernetes: "{{ template_registry }}/project-discovery-minos-deploy-kubernetes.tar.gz"
-    remote: "{{ template_registry }}/project-discovery-minos-deploy-remote.tar.gz"
-  default: *docker_compose_url
+    - self-hosted
+    - remote
+  default: self-hosted
+discovery_database:
+  type: str
+  link:
+    redis: "{{ template_registry }}/project-database-redis-init.tar.gz"
+  help: What database system will you use for discovery?
+  choices:
+    - redis
+  default: redis
 
 _envops:
   block_start_string: "{%"

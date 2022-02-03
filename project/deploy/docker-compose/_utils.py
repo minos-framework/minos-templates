@@ -1,8 +1,10 @@
 from __future__ import (
-    annotations, )
+    annotations,
+)
 
 from pathlib import (
-    Path, )
+    Path,
+)
 
 import yaml
 
@@ -19,6 +21,6 @@ def build_docker_compose(path: Path) -> str:
 
     if path.exists():
         with path.open() as file:
-            data |= yaml.load(file)
+            data |= yaml.safe_load(file)
 
     return yaml.dump(data, sort_keys=False)

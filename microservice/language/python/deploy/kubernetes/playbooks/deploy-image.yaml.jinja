@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Build {{ name }} Microservice Image
+      shell: docker build --pull -t microservice-{{ name }} -f deploy/Dockerfile .
+      args:
+        chdir: ../
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
+
+    - name: Tag {{ name }} Microservice Image
+      shell: docker tag microservice-{{ name }}:latest {{ kubernetes_registry }}/microservice-{{ name }}:{{ version }}
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
+
+    - name: Push {{ name }} Microservice Image
+      shell: docker push {{ kubernetes_registry }}/microservice-{{ name }}:{{ version }}
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines

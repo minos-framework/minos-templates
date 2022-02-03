@@ -9,51 +9,6 @@ project_version:
   type: str
   help: What is the version of the project?
   default: 0.1.0
-project_deploy:
-  type: str
-  link: true
-  help: What deploy system do you want to use?
-  choices:
-    docker_compose: &docker_compose_url "{{ template_registry }}/project-deploy-docker-compose.tar.gz"
-    kubernetes: "{{ template_registry }}/project-deploy-kubernetes.tar.gz"
-  default: *docker_compose_url
-project_database_postgres:
-  type: str
-  link: true
-  help: Do you want to use the Postgres database?
-  choices:
-    "yes": &postgres_url "{{ template_registry }}/project-database-postgres-init.tar.gz"
-    "no": ""
-  default: *postgres_url
-project_database_redis:
-  type: str
-  link: true
-  help: Do you want to use the Redis database?
-  choices:
-    "yes": &redis_url "{{ template_registry }}/project-database-redis-init.tar.gz"
-    "no": ""
-  default: *redis_url
-project_broker:
-  type: str
-  link: true
-  help: What broker do you want to use?
-  choices:
-    kafka: &kafka_url "{{ template_registry }}/project-broker-kafka-init.tar.gz"
-  default: *kafka_url
-project_api_gateway:
-  type: str
-  link: true
-  help: What API Gateway do you want to use?
-  choices:
-    minos: &minos_api_gateway_url "{{ template_registry }}/project-apigateway-minos-init.tar.gz"
-  default: *minos_api_gateway_url
-project_discovery:
-  type: str
-  link: true
-  help: What Discovery do you want to use?
-  choices:
-    minos: &minos_discovery_url "{{ template_registry }}/project-discovery-minos-init.tar.gz"
-  default: *minos_discovery_url
 
 _envops:
   block_start_string: "{%"

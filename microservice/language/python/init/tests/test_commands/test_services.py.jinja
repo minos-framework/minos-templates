@@ -7,10 +7,10 @@ from src import (
 )
 
 from minos.networks import (
+    InMemoryRequest,
     Response,
 )
 from tests.utils import (
-    _FakeRequest,
     build_dependency_injector,
 )
 
@@ -33,7 +33,7 @@ class Test{{aggregate}}CommandService(unittest.IsolatedAsyncioTestCase):
     async def test_create_{{ aggregate.lower() }}(self):
         service = {{ aggregate }}CommandService()
 
-        request = _FakeRequest({})
+        request = InMemoryRequest({})
         response = await service.create_{{ aggregate.lower() }}(request)
 
         self.assertIsInstance(response, Response)

@@ -1,8 +1,10 @@
 from __future__ import (
-    annotations, )
+    annotations,
+)
 
 from pathlib import (
-    Path, )
+    Path,
+)
 
 import yaml
 
@@ -14,13 +16,15 @@ def build_docker_compose(path: Path) -> str:
         raise ValueError("A base Compose file must exist.")
 
     with path.open() as file:
-        data = yaml.load(file, Loader=yaml.FullLoader)
+        data = yaml.safe_load(file)
 
     container = {
         "restart": "always",
         "image": "redis:latest",
+        "volumes": ["redis:/data",],
     }
 
     data["services"]["redis"] = container
+    data["volumes"]["redis"] = dict()
 
     return yaml.dump(data, sort_keys=False)

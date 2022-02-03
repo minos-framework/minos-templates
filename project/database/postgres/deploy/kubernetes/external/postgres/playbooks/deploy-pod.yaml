@@ -1,0 +1,43 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Postgres Configmap
+      shell: kubectl apply -f deploy/configmap.yaml
+      args:
+        chdir: ../
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
+
+    - name: Create Postgres Persistent Volume Claim
+      shell: kubectl apply -f deploy/persistentvolumeclaim.yaml
+      args:
+        chdir: ../
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
+
+    - name: Create Postgres Deployment
+      shell: kubectl apply -f deploy/deployment.yaml
+      args:
+        chdir: ../
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines
+
+    - name: Create Postgres Service
+      shell: kubectl apply -f deploy/service.yaml
+      args:
+        chdir: ../
+      register: results
+
+    - debug: var=results.stdout_lines
+
+    - debug: var=results.stderr_lines

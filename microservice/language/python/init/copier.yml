@@ -8,48 +8,25 @@ version:
 aggregate:
   type: str
   default: "{{ name.replace('_',' ').title().replace(' ', '') }}"
-  help: What is the name of the microservices's Aggregate?
-database:
-  type: str
-  default: postgres
-  choices:
-    - postgres
-  help: What is the database? [ TODO ]
-broker:
-  type: str
-  default: kafka
-  choices:
-    - kafka
-  help: What is the broker? [ TODO ]
-rest:
-  type: str
-  default: aiohttp
-  help: What is the rest? [ TODO ]
-  choices:
-    - aiohttp
-discovery:
-  type: str
-  default: minos
-  choices:
-    - minos
-    - kong
-  help: What is the discovery? [ TODO ]
+  help: What is the name of the microservices's RootEntity?
 package_manager:
   type: str
-  link: true
+  link:
+    poetry: "{{ template_registry }}/microservice-python-package-manager-poetry.tar.gz"
   help: What package manager do you want to use?
   choices:
-    poetry: &poetry_url "{{ template_registry }}/microservice-python-package-manager-poetry.tar.gz"
-    pip: "{{ template_registry }}/microservice-python-package-manager-pip.tar.gz"
-  default: *poetry_url
+    - poetry
+  default: poetry
 deploy:
   type: str
-  link: true
+  link:
+    docker-compose: "{{ template_registry }}/microservice-python-deploy-docker-compose.tar.gz"
+    kubernetes: "{{ template_registry }}/microservice-python-deploy-kubernetes.tar.gz"
   help: What deploy system do you want to use?
   choices:
-    docker_compose: &docker_compose_url "{{ template_registry }}/microservice-python-deploy-docker-compose.tar.gz"
-    kubernetes: "{{ template_registry }}/microservice-python-deploy-kubernetes.tar.gz"
-  default: *docker_compose_url
+    - docker-compose
+    - kubernetes
+  default: kubernetes
 
 _envops:
   block_start_string: "{%"
@@ -62,5 +39,9 @@ _envops:
 
 _templates_suffix: .jinja
 
-_tasks:
-  - make -s create-database
+_exclude:
+  - "copier.yml"
+  - "_utils.py"
+
+_functions:
+  - "_utils.build_deploy_playbook"

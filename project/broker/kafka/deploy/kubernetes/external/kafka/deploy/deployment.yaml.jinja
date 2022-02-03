@@ -27,3 +27,10 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
+          volumeMounts:
+            - name: kafka
+              mountPath: /kafka
+      volumes:
+        - name: kafka
+          persistentVolumeClaim:
+            claimName: kafka

@@ -1,12 +1,23 @@
-postgres_deploy:
+project_deploy:
   type: str
-  link: true
+  link:
+    docker-compose: "{{ template_registry }}/project-deploy-docker-compose.tar.gz"
+    kubernetes: "{{ template_registry }}/project-deploy-kubernetes.tar.gz"
+  help: What deploy system do you want to use?
+  choices:
+    - docker-compose
+    - kubernetes
+  default: kubernetes
+broker_deploy:
+  type: str
+  link:
+    self-hosted: "{{ template_registry }}/project-broker-kafka-deploy-{{ project_deploy }}.tar.gz"
+    remote: "{{ template_registry }}/project-broker-kafka-deploy-remote.tar.gz"
   help: Where will be the Kafka broker located?
   choices:
-    docker_compose: &docker_compose_url "{{ template_registry }}/project-broker-kafka-deploy-docker-compose.tar.gz"
-    kubernetes: "{{ template_registry }}/project-broker-kafka-deploy-kubernetes.tar.gz"
-    remote: "{{ template_registry }}/project-broker-kafka-deploy-remote.tar.gz"
-  default: *docker_compose_url
+    - self-hosted
+    - remote
+  default: self-hosted
 
 _envops:
   block_start_string: "{%"

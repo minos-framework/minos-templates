@@ -1,8 +1,10 @@
 from __future__ import (
-    annotations, )
+    annotations,
+)
 
 from pathlib import (
-    Path, )
+    Path,
+)
 
 import yaml
 
@@ -14,22 +16,17 @@ def build_docker_compose(path: Path) -> str:
         raise ValueError("A base Compose file must exist.")
 
     with path.open() as file:
-        data = yaml.load(file, Loader=yaml.FullLoader)
+        data = yaml.safe_load(file)
 
-    data["volumes"]["postgres_volume"] = {}
+    data["volumes"]["postgres"] = {}
 
     container = {
         "restart": "always",
         "build": "external/postgres",
         "command": "postgres -c 'max_connections=200'",
         "ports": ["5432"],
-        "volumes": [
-            "postgres_volume:/var/lib/postgresql",
-        ],
-        "environment": {
-            "POSTGRES_USER": "minos",
-            "POSTGRES_PASSWORD": "min0s",
-        },
+        "volumes": ["postgres:/var/lib/postgresql/data",],
+        "environment": {"POSTGRES_USER": "minos", "POSTGRES_PASSWORD": "min0s",},
     }
 
     data["services"]["postgres"] = container

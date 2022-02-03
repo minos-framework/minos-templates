@@ -1,12 +1,23 @@
+project_deploy:
+  type: str
+  link:
+    docker-compose: "{{ template_registry }}/project-deploy-docker-compose.tar.gz"
+    kubernetes: "{{ template_registry }}/project-deploy-kubernetes.tar.gz"
+  help: What deploy system do you want to use?
+  choices:
+    - docker-compose
+    - kubernetes
+  default: kubernetes
 postgres_deploy:
   type: str
-  link: true
+  link:
+    self-hosted: "{{ template_registry }}/project-database-postgres-deploy-{{ project_deploy }}.tar.gz"
+    remote: "{{ template_registry }}/project-database-postgres-deploy-remote.tar.gz"
   help: Where will be the Postgres database located?
   choices:
-    docker_compose: &docker_compose_url "{{ template_registry }}/project-database-postgres-deploy-docker-compose.tar.gz"
-    kubernetes: "{{ template_registry }}/project-database-postgres-deploy-kubernetes.tar.gz"
-    remote: "{{ template_registry }}/project-database-postgres-deploy-remote.tar.gz"
-  default: *docker_compose_url
+    - self-hosted
+    - remote
+  default: self-hosted
 
 _envops:
   block_start_string: "{%"

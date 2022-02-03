@@ -1,8 +1,10 @@
 from __future__ import (
-    annotations, )
+    annotations,
+)
 
 from pathlib import (
-    Path, )
+    Path,
+)
 
 import yaml
 
@@ -14,16 +16,14 @@ def build_docker_compose(path: Path) -> str:
         raise ValueError("A base Compose file must exist.")
 
     with path.open() as file:
-        data = yaml.load(file, Loader=yaml.FullLoader)
+        data = yaml.safe_load(file)
 
     container = {
         "restart": "always",
         "build": "external/discovery",
         "ports": ["5567"],
         "depends_on": ["redis"],
-        "environment": {
-            "DISCOVERY_SERVICE_DB_HOST": "redis",
-        },
+        "environment": {"DISCOVERY_SERVICE_DB_HOST": "redis",},
     }
 
     data["services"]["discovery"] = container

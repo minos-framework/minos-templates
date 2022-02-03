@@ -16,9 +16,6 @@ tar -czf "$BUILD_DIR/microservice-python-init.tar.gz" -C "$ROOT_DIR/microservice
 echo "Building Microservice Python Package Manager Poetry Template..."
 tar -czf "$BUILD_DIR/microservice-python-package-manager-poetry.tar.gz" -C "$ROOT_DIR/microservice/language/python/package-manager/poetry" .
 
-echo "Building Microservice Python Package Manager Pip Template..."
-tar -czf "$BUILD_DIR/microservice-python-package-manager-pip.tar.gz" -C "$ROOT_DIR/microservice/language/python/package-manager/pip" .
-
 echo "Building Microservice Python Deploy Docker Compose Template..."
 tar -czf "$BUILD_DIR/microservice-python-deploy-docker-compose.tar.gz" -C "$ROOT_DIR/microservice/language/python/deploy/docker-compose" .
 
