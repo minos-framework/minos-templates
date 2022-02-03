@@ -15,9 +15,6 @@ def build_deploy_playbook(path: Path) -> str:
     if data is None:
         data = list()
 
-    data.append({
-        "name": "Deploy Namespace",
-        "import_playbook": "deploy-namespace.yaml"
-    })
+    data.append({"name": "Deploy Namespace", "import_playbook": "deploy-namespace.yaml"})
 
     return yaml.dump(data, sort_keys=False)
