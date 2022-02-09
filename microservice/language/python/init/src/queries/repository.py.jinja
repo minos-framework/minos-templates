@@ -1,0 +1,16 @@
+from minos.common import MinosSetup, MinosConfig
+from sqlalchemy import create_engine
+from src.queries.models import Base
+
+class {{ aggregate }}QueryServiceRepository(MinosSetup):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.engine = create_engine({{ THE URL DATABASE }})
+
+    async def _setup(self) -> None:
+        Base.metadata.create_all(self.engine)
+
+    @classmethod
+    def _from_config(cls, *args, config: MinosConfig, **kwargs) -> {{ aggregate }}QueryRepository:
+        return cls(*args, **(config.query_repository._asdict()) | kwargs)
