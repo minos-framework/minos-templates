@@ -7,7 +7,7 @@ class {{ aggregate }}QueryServiceRepository(MinosSetup):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.engine = create_engine("postgresql+psycopg2://postgres:@localhost:5432/{{ name }}_db".format(**kwargs))
+        self.engine = create_engine("postgresql+psycopg2://postgres:@localhost:5432/{{ name }}_query_db".format(**kwargs))
         self.session = sessionmaker(bind=self.engine)
 
     async def _setup(self) -> None:
