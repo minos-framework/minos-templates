@@ -4,7 +4,6 @@ from sqlalchemy.orm import sessionmaker
 from src.queries.models import Base
 
 class {{ aggregate }}QueryServiceRepository(MinosSetup):
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.engine = create_engine("postgresql+psycopg2://postgres:@localhost:5432/{{ name }}_query_db".format(**kwargs))
