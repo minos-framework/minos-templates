@@ -22,3 +22,30 @@ def build_deploy_playbook(path: Path) -> str:
     data.append({"name": "Create Database", "import_playbook": "create-database.yaml"})
 
     return yaml.dump(data, sort_keys=False)
+
+
+def build_docker_compose(path: Path, microservice_name: str) -> str:
+    """Build Docker Compose file content."""
+
+    if not path.exists():
+        raise ValueError("A base Compose file must exist.")
+
+    with path.open() as file:
+        data = yaml.safe_load(file)
+
+    microservice_container = {
+        "restart": "always",
+        "build": {
+            "context": f"microservices/{microservice_name}",
+            "target": "production"
+        },
+        "environment": data["x-microservice-environment"],
+        "depends_on": data["x-microservice-depends-on"]
+    }
+
+    data["services"][f"microservice-{microservice_name}"] = microservice_container
+
+    with path.open("w") as file:
+        yaml.dump(data, file, sort_keys=False)
+
+    return ""

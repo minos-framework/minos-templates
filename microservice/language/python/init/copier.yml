@@ -26,7 +26,7 @@ deploy:
   choices:
     - docker-compose
     - kubernetes
-  default: kubernetes
+  default: docker-compose
 
 _envops:
   block_start_string: "{%"
@@ -45,3 +45,4 @@ _exclude:
 
 _functions:
   - "_utils.build_deploy_playbook"
+  - "_utils.build_docker_compose"
