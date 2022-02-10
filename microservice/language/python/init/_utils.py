@@ -39,19 +39,16 @@ def build_docker_compose(path: Path, microservice_name: str) -> str:
             "MINOS_BROKER_HOST": "kafka",
             "MINOS_REPOSITORY_HOST": "postgres",
             "MINOS_SNAPSHOT_HOST": "postgres",
-            "MINOS_DISCOVERY_HOST": "discovery"
+            "MINOS_DISCOVERY_HOST": "discovery",
         }
     if "x-microservice-depends-on" not in data:
         data["x-microservice-depends-on"] = ["postgres", "kafka", "discovery"]
 
     microservice_container = {
         "restart": "always",
-        "build": {
-            "context": f"microservices/{microservice_name}",
-            "target": "production"
-        },
+        "build": {"context": f"microservices/{microservice_name}", "target": "production"},
         "environment": data["x-microservice-environment"],
-        "depends_on": data["x-microservice-depends-on"]
+        "depends_on": data["x-microservice-depends-on"],
     }
 
     data["services"][f"microservice-{microservice_name}"] = microservice_container
