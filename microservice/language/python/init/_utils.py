@@ -33,6 +33,17 @@ def build_docker_compose(path: Path, microservice_name: str) -> str:
     with path.open() as file:
         data = yaml.safe_load(file)
 
+    if "x-microservice-environment" not in data:
+        data["x-microservice-environment"] = {
+            "MINOS_BROKER_QUEUE_HOST": "postgres",
+            "MINOS_BROKER_HOST": "kafka",
+            "MINOS_REPOSITORY_HOST": "postgres",
+            "MINOS_SNAPSHOT_HOST": "postgres",
+            "MINOS_DISCOVERY_HOST": "discovery"
+        }
+    if "x-microservice-depends-on" not in data:
+        data["x-microservice-depends-on"] = ["postgres", "kafka", "discovery"]
+
     microservice_container = {
         "restart": "always",
         "build": {
