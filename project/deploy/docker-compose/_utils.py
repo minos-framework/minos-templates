@@ -14,8 +14,14 @@ def build_docker_compose(path: Path) -> str:
 
     data = dict()
     data["version"] = "3.9"
-    data["x-microservice-environment"] = []
-    data["x-microservice-depends-on"] = []
+    data["x-microservice-environment"] = {
+        "MINOS_BROKER_QUEUE_HOST": "postgres",
+        "MINOS_BROKER_HOST": "kafka",
+        "MINOS_REPOSITORY_HOST": "postgres",
+        "MINOS_SNAPSHOT_HOST": "postgres",
+        "MINOS_DISCOVERY_HOST": "discovery"
+    }
+    data["x-microservice-depends-on"] = ["postgres", "kafka", "discovery"]
     data["volumes"] = {}
     data["services"] = {}
 
