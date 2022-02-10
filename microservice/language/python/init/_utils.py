@@ -50,6 +50,7 @@ def build_docker_compose(path: Path, microservice_name: str) -> str:
             "context": f"microservices/{microservice_name}",
             "target": "production"
         },
+        "ports": ["8080:8080"],
         "environment": data["x-microservice-environment"],
         "depends_on": data["x-microservice-depends-on"]
     }
