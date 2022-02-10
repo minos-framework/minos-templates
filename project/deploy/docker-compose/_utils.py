@@ -14,8 +14,6 @@ def build_docker_compose(path: Path) -> str:
 
     data = dict()
     data["version"] = "3.9"
-    data["x-microservice-environment"] = []
-    data["x-microservice-depends-on"] = []
     data["volumes"] = {}
     data["services"] = {}
 

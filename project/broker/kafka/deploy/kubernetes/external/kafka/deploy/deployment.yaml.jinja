@@ -29,7 +29,7 @@ spec:
                   fieldPath: status.podIP
           volumeMounts:
             - name: kafka
-              mountPath: /kafka
+              mountPath: /kafka/kafka-logs
       volumes:
         - name: kafka
           persistentVolumeClaim:
