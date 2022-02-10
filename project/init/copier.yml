@@ -9,6 +9,16 @@ project_version:
   type: str
   help: What is the version of the project?
   default: 0.1.0
+project_deploy:
+  type: str
+  link:
+    docker-compose: "{{ template_registry }}/project-deploy-docker-compose.tar.gz"
+    kubernetes: "{{ template_registry }}/project-deploy-kubernetes.tar.gz"
+  help: What deploy system do you want to use?
+  choices:
+    - docker-compose
+    - kubernetes
+  default: docker-compose
 
 _envops:
   block_start_string: "{%"
