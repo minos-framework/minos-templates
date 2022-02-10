@@ -1,6 +1,6 @@
 FROM ghcr.io/clariteia/minos-microservice:0.1.8 as development
 
-COPY ./pyproject.toml ./poetry.lock ./
+COPY ./pyproject.toml ./
 RUN poetry install --no-root
 COPY . .
 CMD ["poetry", "run", "microservice", "start"]

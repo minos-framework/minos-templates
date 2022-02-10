@@ -32,16 +32,16 @@ broker:
   port: 9092
   queue:
     database: {{ name }}_db
-    user: postgres
-    password: ""
+    user: minos
+    password: min0s
     host: localhost
     port: 5432
     records: 1000
     retry: 2
 repository:
   database: {{ name }}_db
-  user: postgres
-  password: ""
+  user: minos
+  password: min0s
   host: localhost
   port: 5432
 query_repository:
@@ -52,8 +52,8 @@ query_repository:
   port: 5432
 snapshot:
   database: {{ name }}_db
-  user: postgres
-  password: ""
+  user: minos
+  password: min0s
   host: localhost
   port: 5432
 saga:
