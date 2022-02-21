@@ -10,6 +10,7 @@ service:
     transaction_repository: minos.aggregate.PostgreSqlTransactionRepository
     event_repository: minos.aggregate.PostgreSqlEventRepository
     snapshot_repository: minos.aggregate.PostgreSqlSnapshotRepository
+    {{ name }}_repository: src.{{ aggregate }}QueryServiceRepository
     saga_manager: minos.saga.SagaManager
     discovery: minos.networks.DiscoveryConnector
   services:
