@@ -19,9 +19,13 @@ def build_docker_compose(path: Path) -> str:
         data = yaml.safe_load(file)
 
     container = {
+        "image": "docker.io/bitnami/redis:6.2",
         "restart": "always",
-        "image": "redis:latest",
-        "volumes": ["redis:/data",],
+        "environment": {
+            "ALLOW_EMPTY_PASSWORD": "yes",
+            "REDIS_DISABLE_COMMANDS": "FLUSHDB,FLUSHALL"
+        },
+        "volumes": ["redis:/bitnami/redis/data", ],
     }
 
     data["services"]["redis"] = container
