@@ -1,10 +1,6 @@
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
-from pathlib import (
-    Path,
-)
+from pathlib import Path
 
 import yaml
 
@@ -22,11 +18,8 @@ def build_docker_compose(path: Path) -> str:
         "image": "docker.io/bitnami/redis:6.2",
         "user": "root",
         "restart": "always",
-        "environment": {
-            "ALLOW_EMPTY_PASSWORD": "yes",
-            "REDIS_DISABLE_COMMANDS": "FLUSHDB,FLUSHALL"
-        },
-        "volumes": ["redis:/bitnami/redis/data", ],
+        "environment": {"ALLOW_EMPTY_PASSWORD": "yes", "REDIS_DISABLE_COMMANDS": "FLUSHDB,FLUSHALL"},
+        "volumes": ["redis:/bitnami/redis/data",],
     }
 
     data["services"]["redis"] = container
