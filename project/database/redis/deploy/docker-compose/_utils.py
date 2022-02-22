@@ -20,6 +20,7 @@ def build_docker_compose(path: Path) -> str:
 
     container = {
         "image": "docker.io/bitnami/redis:6.2",
+        "user": "root",
         "restart": "always",
         "environment": {
             "ALLOW_EMPTY_PASSWORD": "yes",
