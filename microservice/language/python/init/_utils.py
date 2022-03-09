@@ -33,8 +33,8 @@ def build_docker_compose(path: Path, microservice_name: str) -> str:
         raise ValueError("external/postgres/10-create-database.sql script must exist")
 
     with db_creation_path.open("a") as db_creation_file:
-        db_creation_file.write(f"\nCREATE DATABASE {microservice_name}_db")
-        db_creation_file.write(f"\nCREATE DATABASE {microservice_name}_query_db")
+        db_creation_file.write(f"\nCREATE DATABASE {microservice_name}_db;")
+        db_creation_file.write(f"\nCREATE DATABASE {microservice_name}_query_db;")
 
     if not path.exists():
         raise ValueError("A base Compose file must exist.")
