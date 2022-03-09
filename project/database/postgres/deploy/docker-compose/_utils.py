@@ -25,8 +25,8 @@ def build_docker_compose(path: Path) -> str:
         "build": "external/postgres",
         "command": "postgres -c 'max_connections=200'",
         "ports": ["5432"],
-        "volumes": ["postgres:/var/lib/postgresql/data", ],
-        "environment": {"POSTGRES_USER": "minos", "POSTGRES_PASSWORD": "min0s", },
+        "volumes": ["postgres:/var/lib/postgresql/data",],
+        "environment": {"POSTGRES_USER": "minos", "POSTGRES_PASSWORD": "min0s",},
     }
 
     data["services"]["postgres"] = container
