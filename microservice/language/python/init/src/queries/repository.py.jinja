@@ -8,7 +8,7 @@ class {{ aggregate }}QueryServiceRepository(MinosSetup):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.engine = create_engine("postgresql+psycopg2://postgres:@localhost:5432/{{ name }}_query_db".format(**kwargs))
-        self.session = sessionmaker(bind=self.engine)
+        self.session = sessionmaker(bind=self.engine)()
 
     async def _setup(self) -> None:
         Base.metadata.create_all(self.engine)
@@ -16,7 +16,3 @@ class {{ aggregate }}QueryServiceRepository(MinosSetup):
     @classmethod
     def _from_config(cls, *args, config: MinosConfig, **kwargs):
         return cls(*args, **(config.query_repository._asdict()) | kwargs)
-
-    @property
-    def session(self):
-        return self.session
