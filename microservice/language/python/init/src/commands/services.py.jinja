@@ -9,7 +9,7 @@ from minos.networks import (
 )
 
 from ..aggregates import (
-    {{ aggregate }}Aggregate,
+    {{ aggregate }},
 )
 
 
@@ -25,7 +25,7 @@ class {{ aggregate }}CommandService(CommandService):
         :return: A ``Response`` instance.
         """
         try:
-            uuid = await {{ aggregate }}Aggregate.create()
-            return Response({"uuid": uuid})
+            {{ name }} = await {{ aggregate }}.create()
+            return Response({{ name }})
         except Exception as exc:
             raise ResponseException(f"An error occurred during {{ aggregate }} creation: {exc}")
