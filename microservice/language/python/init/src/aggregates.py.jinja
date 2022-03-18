@@ -14,3 +14,9 @@ class {{ aggregate }}(RootEntity):
 
 class {{ aggregate }}Aggregate(Aggregate[{{ aggregate }}]):
     """{{ aggregate }}Aggregate class."""
+
+    @staticmethod
+    async def create() -> UUID:
+        """Create a new instance."""
+        root = await {{ aggregate }}.create()
+        return root.uuid
