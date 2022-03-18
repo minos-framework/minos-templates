@@ -1,3 +1,11 @@
+from dependency_injector.wiring import (
+    Provide,
+)
+
+from src.queries.repository import (
+    {{ aggregate }}QueryServiceRepository,
+)
+
 from minos.aggregate import (
     Event,
 )
