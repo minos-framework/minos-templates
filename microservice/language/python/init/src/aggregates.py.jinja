@@ -18,5 +18,5 @@ class {{ aggregate }}Aggregate(Aggregate[{{ aggregate }}]):
     @staticmethod
     async def create() -> UUID:
         """Create a new instance."""
-        root = await {{ aggregate }}.create()
-        return root.uuid
+        {{ name }} = await {{ aggregate }}.create()
+        return {{ name }}
