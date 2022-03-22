@@ -28,7 +28,7 @@ def build_deploy_playbook(path: Path) -> str:
 def build_docker_compose(path: Path, microservice_name: str) -> str:
     """Build Docker Compose file content."""
 
-    db_creation_path = path.parent / "external/init/postgres/10-create-database.sql"
+    db_creation_path = path.parent / "external/postgres/init/10-create-database.sql"
     if not db_creation_path.exists():
         raise ValueError("external/postgres/init/10-create-database.sql script must exist")
 
