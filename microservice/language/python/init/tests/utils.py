@@ -1,13 +1,7 @@
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
-from pathlib import (
-    Path,
-)
-from uuid import (
-    UUID,
-)
+from pathlib import Path
+from uuid import UUID
 
 from minos.aggregate import (
     InMemoryEventRepository,
@@ -22,9 +16,7 @@ from minos.common import (
     LockPool,
     SetupMixin,
 )
-from minos.networks import (
-    InMemoryBrokerPublisher,
-)
+from minos.networks import InMemoryBrokerPublisher
 from minos.saga import (
     SagaContext,
     SagaStatus,
