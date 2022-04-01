@@ -15,26 +15,26 @@ from minos.aggregate import (
     InMemoryTransactionRepository,
 )
 from minos.common import (
+    Config,
     DependencyInjector,
+    Injectable,
     Lock,
-    MinosConfig,
-    MinosPool,
-    MinosSetup,
+    LockPool,
+    SetupMixin,
+)
+from minos.networks import (
+    InMemoryBrokerPublisher,
 )
 from minos.saga import (
     SagaContext,
     SagaStatus,
 )
 
-
-class _FakeBroker(MinosSetup):
-    """For testing purposes."""
-
-    async def send(self, *args, **kwargs) -> None:
-        """For testing purposes."""
+from src import FooQueryServiceRepository
 
 
-class _FakeSagaManager(MinosSetup):
+@Injectable("saga_manager")
+class _FakeSagaManager(SetupMixin):
     """For testing purposes."""
 
     async def run(self, *args, **kwargs) -> UUID:
@@ -59,7 +59,7 @@ class FakeLock(Lock):
         return
 
 
-class FakeLockPool(MinosPool):
+class FakeLockPool(LockPool):
     """For testing purposes."""
 
     async def _create_instance(self):
@@ -74,19 +74,22 @@ def build_dependency_injector() -> DependencyInjector:
 
     return DependencyInjector(
         build_config(),
-        saga_manager=_FakeSagaManager,
-        broker_publisher=_FakeBroker,
-        lock_pool=FakeLockPool,
-        transaction_repository=InMemoryTransactionRepository,
-        event_repository=InMemoryEventRepository,
-        snapshot_repository=InMemorySnapshotRepository,
+        [
+            _FakeSagaManager,
+            InMemoryBrokerPublisher,
+            FakeLockPool,
+            InMemoryTransactionRepository,
+            InMemoryEventRepository,
+            InMemorySnapshotRepository,
+            FooQueryServiceRepository,
+        ],
     )
 
 
-def build_config() -> MinosConfig:
+def build_config() -> Config:
     """For testing purposes"""
 
-    return MinosConfig(DEFAULT_CONFIG_FILE_PATH)
+    return Config(DEFAULT_CONFIG_FILE_PATH)
 
 
 DEFAULT_CONFIG_FILE_PATH = Path(__file__).parents[1] / "config.yml"
