@@ -1,5 +1,16 @@
+from dependency_injector.wiring import (
+    Provide,
+)
+
+from src.queries.repository import (
+    {{ aggregate }}QueryServiceRepository,
+)
+
 from minos.aggregate import (
     Event,
+)
+from minos.common import (
+    Inject,
 )
 from minos.cqrs import (
     QueryService,
@@ -14,6 +25,11 @@ from minos.networks import (
 
 class {{ aggregate }}QueryService(QueryService):
     """{{ aggregate }}QueryService class."""
+
+    @Inject()
+    def __init__(self, repository: {{ aggregate }}QueryServiceRepository, **kwargs):
+        super().__init__(**kwargs)
+        self.repository = repository
 
     @enroute.rest.query("/{{ aggregate.lower() }}s", "GET")
     async def get_{{ aggregate.lower() }}(self, request: Request) -> Response:

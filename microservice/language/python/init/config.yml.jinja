@@ -1,21 +1,68 @@
-service:
-  name: {{ name }}
-  aggregate: src.aggregates.{{ aggregate }}
-  injections:
-    lock_pool: minos.common.PostgreSqlLockPool
-    postgresql_pool: minos.common.PostgreSqlPool
-    broker_publisher: minos.plugins.kafka.InMemoryQueuedKafkaBrokerPublisher
-    broker_subscriber_builder: minos.plugins.kafka.InMemoryQueuedKafkaBrokerSubscriberBuilder
-    broker_pool: minos.networks.BrokerClientPool
-    transaction_repository: minos.aggregate.PostgreSqlTransactionRepository
-    event_repository: minos.aggregate.PostgreSqlEventRepository
-    snapshot_repository: minos.aggregate.PostgreSqlSnapshotRepository
-    saga_manager: minos.saga.SagaManager
-    discovery: minos.networks.DiscoveryConnector
-  services:
-    - minos.networks.BrokerHandlerService
-    - minos.networks.RestService
-    - minos.networks.PeriodicTaskSchedulerService
+version: 2
+name: {{ name }}
+injections:
+  - src.{{ aggregate }}QueryServiceRepository
+databases:
+  default:
+    database: {{ name }}_db
+    user: minos
+    password: min0s
+    host: localhost
+    port: 5432
+  query:
+    database: {{ name }}_query_db
+    user: minos
+    password: min0s
+    host: localhost
+    port: 5432
+  saga:
+    path: ./{{ name }}.lmdb
+interfaces:
+  broker:
+    port: minos.networks.BrokerPort
+    common:
+      host: localhost
+      port: 9092
+      queue:
+        records: 1000
+        retry: 2
+    publisher:
+      client: minos.plugins.kafka.KafkaBrokerPublisher
+      queue: minos.networks.PostgreSqlBrokerPublisherQueue
+    subscriber:
+      client: minos.plugins.kafka.KafkaBrokerSubscriber
+      queue: minos.networks.PostgreSqlBrokerSubscriberQueue
+      validator: minos.networks.PostgreSqlBrokerSubscriberDuplicateValidator
+  http:
+    port: minos.networks.HttpPort
+    connector:
+      client: minos.plugins.aiohttp.AioHttpConnector
+      host: 0.0.0.0
+      port: 8023
+  periodic:
+    port: minos.networks.PeriodicPort
+pools:
+  lock: minos.common.PostgreSqlLockPool
+  database: minos.common.PostgreSqlPool
+  broker: minos.networks.BrokerClientPool
+discovery:
+  connector: minos.networks.DiscoveryConnector
+  client: minos.plugins.minos_discovery.MinosDiscoveryClient
+  host: localhost
+  port: 5567
+saga:
+  manager: minos.saga.SagaManager
+aggregate:
+  entities:
+    - src.aggregates.{{ aggregate }}
+  repositories:
+    transaction: minos.aggregate.PostgreSqlTransactionRepository
+    event: minos.aggregate.PostgreSqlEventRepository
+    snapshot: minos.aggregate.PostgreSqlSnapshotRepository
+routers:
+  - minos.networks.BrokerRouter
+  - minos.networks.PeriodicRouter
+  - minos.networks.RestHttpRouter
 middleware:
   - minos.saga.transactional_command
 services:
@@ -24,42 +71,3 @@ services:
   - minos.saga.SagaService
   - src.queries.{{ aggregate }}QueryService
   - src.commands.{{ aggregate }}CommandService
-rest:
-  host: 0.0.0.0
-  port: 8080
-broker:
-  host: localhost
-  port: 9092
-  queue:
-    database: {{ name }}_db
-    user: minos
-    password: min0s
-    host: localhost
-    port: 5432
-    records: 1000
-    retry: 2
-repository:
-  database: {{ name }}_db
-  user: minos
-  password: min0s
-  host: localhost
-  port: 5432
-query_repository:
-  database: {{ name }}_query_db
-  user: postgres
-  password: ""
-  host: localhost
-  port: 5432
-snapshot:
-  database: {{ name }}_db
-  user: minos
-  password: min0s
-  host: localhost
-  port: 5432
-saga:
-  storage:
-    path: ./{{ name }}.lmdb
-discovery:
-  client: minos.plugins.minos_discovery.MinosDiscoveryClient
-  host: localhost
-  port: 5567
