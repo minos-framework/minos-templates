@@ -18,7 +18,7 @@ from src.queries.models import (
 class {{ aggregate }}QueryServiceRepository(SetupMixin):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.engine = create_engine("postgresql+psycopg2://minos:min0s@postgres:5432/{{ name }}_query_db".format(**kwargs))
+        self.engine = create_engine("postgresql+psycopg2://{user}:{password}@{host}:{port}/{{ name }}_query_db".format(**kwargs))
         self.session = sessionmaker(bind=self.engine)()
 
     async def _setup(self) -> None:
