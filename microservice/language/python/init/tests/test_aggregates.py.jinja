@@ -16,10 +16,10 @@ class Test{{aggregate}}(unittest.IsolatedAsyncioTestCase):
         self.injector = build_dependency_injector()
 
     async def asyncSetUp(self) -> None:
-        await self.injector.wire(modules=[sys.modules[__name__]])
+        await self.injector.wire_and_destroy_injections()
 
     async def asyncTearDown(self) -> None:
-        await self.injector.unwire()
+        await self.injector.unwire_and_destroy_injections()
 
     def test_constructor(self):
         obj = {{ aggregate }}()
