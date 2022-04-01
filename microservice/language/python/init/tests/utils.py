@@ -30,7 +30,9 @@ from minos.saga import (
     SagaStatus,
 )
 
-from src import FooQueryServiceRepository
+from src import (
+    {{ aggregate }}QueryServiceRepository,
+)
 
 
 @Injectable("saga_manager")
