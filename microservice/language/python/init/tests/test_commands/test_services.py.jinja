@@ -24,7 +24,7 @@ class Test{{aggregate}}CommandService(unittest.IsolatedAsyncioTestCase):
         await self.injector.wire_and_setup_injections()
 
     async def asyncTearDown(self) -> None:
-        await self.injector.unwire_and_setup_injections()
+        await self.injector.unwire_and_destroy_injections()
 
     def test_constructor(self):
         service = {{ aggregate }}CommandService()
