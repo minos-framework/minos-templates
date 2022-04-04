@@ -83,7 +83,7 @@ def build_dependency_injector() -> DependencyInjector:
             InMemoryTransactionRepository,
             InMemoryEventRepository,
             InMemorySnapshotRepository,
-            FooQueryServiceRepository,
+            {{ aggregate }}QueryServiceRepository,
         ],
     )
 
