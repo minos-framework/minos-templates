@@ -29,15 +29,17 @@ def build_docker_compose(path: Path) -> str:
 
     kafka_container = {
         "restart": "always",
-        "image": "wurstmeister/kafka:latest",
+        "image": "confluentinc/cp-kafka:latest",
         "ports": ["9092"],
         "depends_on": ["zookeeper"],
         "volumes": ["kafka:/kafka/kafka-logs"],
         "environment": {
-            "KAFKA_LOG_DIRS": "/kafka/kafka-logs",
-            "KAFKA_DELETE_TOPIC_ENABLE": "true",
+            "KAFKA_BROKER_ID": 1,
             "KAFKA_ZOOKEEPER_CONNECT": "zookeeper:2181",
-            "KAFKA_ADVERTISED_HOST_NAME": "kafka",
+            "KAFKA_ADVERTISED_LISTENERS": "PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092",
+            "KAFKA_LISTENER_SECURITY_PROTOCOL_MAP": "PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT",
+            "KAFKA_INTER_BROKER_LISTENER_NAME": "PLAINTEXT",
+            "KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR": 1,
         },
     }
 
